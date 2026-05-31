@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+  <rect width="1200" height="780" fill="#fff"/>
+  <text x="24" y="96" font-family="Arial, sans-serif" font-size="38" fill="#777"><tspan fill="#4285f4">G</tspan><tspan fill="#ea4335">o</tspan><tspan fill="#fbbc05">o</tspan><tspan fill="#4285f4">g</tspan><tspan fill="#34a853">l</tspan><tspan fill="#ea4335">e</tspan> Analytics Academy</text>
+  <rect x="0" y="135" width="1200" height="112" fill="#fbbc05"/>
+  <text x="26" y="194" font-family="Arial, sans-serif" font-size="36" fill="#fff">Google Analytics for Beginners</text>
+  <text x="26" y="232" font-family="Arial, sans-serif" font-size="27" fill="#fff">Certificate of Completion</text>
+  <rect x="904" y="0" width="140" height="620" fill="#fbbc05"/>
+  <circle cx="974" cy="182" r="88" fill="#fbbc05" stroke="#f77c19" stroke-width="16"/>
+  <circle cx="974" cy="182" r="42" fill="#f77c19"/>
+  <path d="M904 620 L1044 620 L974 712 Z" fill="#f77c19"/>
+  <text x="58" y="480" font-family="Arial, sans-serif" font-size="45" fill="#555">Naveenkrishna Nair</text>
+  <text x="58" y="532" font-family="Arial, sans-serif" font-size="26" fill="#666">Awarded for successfully completing</text>
+  <text x="58" y="568" font-family="Arial, sans-serif" font-size="26" fill="#666">the course "Google Analytics for</text>
+  <text x="58" y="604" font-family="Arial, sans-serif" font-size="26" fill="#666">Beginners"</text>
+  <text x="30" y="744" font-family="Arial, sans-serif" font-size="24" fill="#fbbc05">● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</text>
+</svg>

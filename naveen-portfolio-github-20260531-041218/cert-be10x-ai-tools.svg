@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+  <rect width="1200" height="780" fill="#fff"/>
+  <rect x="14" y="16" width="1172" height="748" fill="none" stroke="#050505" stroke-width="6"/>
+  <rect x="842" y="18" width="278" height="495" fill="#bfbfbf"/>
+  <path d="M842 513 L1120 513 L981 575 Z" fill="#bfbfbf"/>
+  <text x="78" y="142" font-family="Arial, sans-serif" font-weight="900" font-size="104" fill="#000">be</text>
+  <circle cx="286" cy="116" r="75" fill="#000"/>
+  <text x="220" y="146" font-family="Arial, sans-serif" font-weight="900" font-size="82" fill="#fff">10X</text>
+  <text x="70" y="300" font-family="Arial, sans-serif" font-weight="900" font-size="74" fill="#000">Certificate</text>
+  <text x="76" y="350" font-family="Arial, sans-serif" font-size="27" fill="#111">of Completion Awarded to</text>
+  <text x="76" y="420" font-family="Arial, sans-serif" font-weight="800" font-size="48" fill="#111">NAVEENKRISHNA NAIR</text>
+  <text x="82" y="460" font-family="Arial, sans-serif" font-size="25" fill="#111">on successful completion of AI tools and ChatGPT workshop</text>
+  <text x="82" y="492" font-family="Arial, sans-serif" font-size="25" fill="#111">Holder of this certificate can</text>
+  <text x="96" y="545" font-family="Arial, sans-serif" font-size="24" fill="#111">• Create presentations using AI in under 5 min</text>
+  <text x="96" y="575" font-family="Arial, sans-serif" font-size="24" fill="#111">• Analyse data using AI in under 30 min</text>
+  <text x="96" y="605" font-family="Arial, sans-serif" font-size="24" fill="#111">• Code and Debug using AI in under 10 min</text>
+  <text x="890" y="88" font-family="Arial, sans-serif" font-weight="900" font-size="38" fill="#000">AI TOOLS</text>
+  <text x="868" y="132" font-family="Arial, sans-serif" font-weight="900" font-size="38" fill="#000">WORKSHOP</text>
+  <circle cx="981" cy="272" r="72" fill="#fff" stroke="#111" stroke-width="4" stroke-dasharray="5 7"/>
+  <text x="910" y="286" font-family="Arial, sans-serif" font-weight="900" font-size="47" fill="#000">be10X</text>
+  <text x="946" y="334" font-family="Arial, sans-serif" font-style="italic" font-size="22" fill="#111">Verified</text>
+  <text x="860" y="448" font-family="Arial, sans-serif" font-weight="800" font-size="24" fill="#111">Issued on:</text>
+  <text x="860" y="480" font-family="Arial, sans-serif" font-weight="800" font-size="26" fill="#111">February 8th, 2026</text>
+  <line x1="62" y1="692" x2="260" y2="692" stroke="#111" stroke-width="2"/>
+  <line x1="410" y1="692" x2="610" y2="692" stroke="#111" stroke-width="2"/>
+  <text x="84" y="716" font-family="Arial, sans-serif" font-size="20" fill="#111">Aditya Goenka</text>
+  <text x="432" y="716" font-family="Arial, sans-serif" font-size="20" fill="#111">Aditya Kachave</text>
+</svg>
