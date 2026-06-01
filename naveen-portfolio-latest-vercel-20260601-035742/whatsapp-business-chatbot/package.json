@@ -1,0 +1,12 @@
+{
+  "name": "naveen-whatsapp-business-chatbot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WhatsApp Cloud API chatbot for Naveen Nair branding and marketing leads.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "syntax": "node scripts/syntax-check.js"
+  }
+}
