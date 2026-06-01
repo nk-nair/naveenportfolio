@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+assets/speed-insights.js
+
+# Package manager files
+.npm
+.yarn
