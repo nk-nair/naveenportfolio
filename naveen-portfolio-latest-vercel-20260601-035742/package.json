@@ -1,0 +1,16 @@
+{
+  "name": "naveen-portfolio",
+  "version": "1.0.0",
+  "description": "Naveen Nair's Portfolio - Player One",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npx serve ."
+  },
+  "keywords": ["portfolio", "vercel"],
+  "author": "Naveen Nair",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.15"
+  }
+}
