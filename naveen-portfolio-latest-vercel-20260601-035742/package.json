@@ -1,0 +1,20 @@
+{
+  "name": "naveen-portfolio",
+  "version": "1.0.0",
+  "description": "Naveen Nair Portfolio Website",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static site'",
+    "lint": "echo 'No linting configured'"
+  },
+  "keywords": [
+    "portfolio",
+    "website"
+  ],
+  "author": "Naveen Nair",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.12"
+  }
+}
