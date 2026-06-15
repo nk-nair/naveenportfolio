@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+  <rect width="1200" height="780" fill="#fff"/>
+  <path d="M145 0 H230 V140 L187 110 L145 140 Z" fill="#25aee4"/>
+  <text x="540" y="86" font-family="Arial, sans-serif" font-weight="800" font-size="42" fill="#444">IIDE</text>
+  <text x="500" y="120" font-family="Arial, sans-serif" font-size="14" fill="#444">THE DIGITAL SCHOOL</text>
+  <text x="395" y="210" font-family="Georgia, serif" font-weight="700" font-size="52" fill="#444">Certificate of Completion</text>
+  <line x1="0" y1="268" x2="380" y2="268" stroke="#25aee4" stroke-width="7"/>
+  <line x1="820" y1="268" x2="1200" y2="268" stroke="#25aee4" stroke-width="7"/>
+  <text x="430" y="276" font-family="Arial, sans-serif" font-weight="700" font-size="26" fill="#777">PROUDLY AWARDED TO</text>
+  <text x="356" y="382" font-family="Arial, sans-serif" font-weight="800" font-size="48" fill="#25aee4">Naveenkrishna Nair</text>
+  <text x="330" y="492" font-family="Arial, sans-serif" font-weight="700" font-size="29" fill="#555">FOR ATTENDING AN ONLINE MASTERCLASS ON</text>
+  <text x="258" y="575" font-family="Arial, sans-serif" font-weight="900" font-size="46" fill="#111">Digital Marketing Fundamentals</text>
+  <text x="250" y="692" font-family="Arial, sans-serif" font-size="24" fill="#333">17-04-2022</text>
+  <circle cx="600" cy="673" r="45" fill="#d7a328"/>
+  <text x="905" y="680" font-family="Georgia, serif" font-style="italic" font-size="50" fill="#111">Karan S.</text>
+  <path d="M1060 690 H1200 V780 H990 Z" fill="#25aee4"/>
+</svg>
