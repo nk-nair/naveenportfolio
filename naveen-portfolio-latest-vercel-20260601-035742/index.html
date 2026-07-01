@@ -260,7 +260,6 @@ body::after {
   min-height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
   padding: 70px 0 85px;
   position: relative;
   overflow: hidden;
@@ -278,23 +277,50 @@ body::after {
   display: flex; flex-direction: column;
   justify-content: flex-start;
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 1;
   padding: 40px 32px 60px 40px;
   position: relative; z-index: 2;
 }
+/* "Won't let your brands sleep" banner: full-width strip between the video and the hero.
+   Starts collapsed; unfolds like a CRT powering on after the first scroll. */
 .dialogue-box {
-  grid-column: 1;
-  grid-row: 1;
-  background: var(--bg2);
-  border: 4px solid var(--pixel-white);
-  box-shadow: 4px 4px 0 var(--pixel-gray), 0 0 20px rgba(0,255,255,0.15);
-  padding: 14px 16px 14px 24px;
   position: relative;
-  margin: 40px 32px 32px 40px;
-  max-width: 560px;
+  z-index: 40;
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(255,45,120,0.12), transparent 30%, transparent 70%, rgba(0,255,255,0.12)),
+    var(--bg2);
+  border-bottom: 4px solid var(--pixel-pink);
+  box-shadow: 0 4px 0 var(--pixel-pink), 0 0 30px rgba(255,45,120,0.2);
+  opacity: 0;
+  transition: grid-template-rows 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+}
+.dialogue-box.is-visible {
+  grid-template-rows: 1fr;
+  opacity: 1;
 }
 .hero-dialogue-content {
-  display: block;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.dialogue-box.is-visible .hero-dialogue-content {
+  padding: 16px 20px;
+}
+.dialogue-box.is-visible .dialogue-text {
+  animation: dialogueGlitchIn 0.5s steps(6, end) 0.35s both;
+}
+@keyframes dialogueGlitchIn {
+  0% { opacity: 0; transform: translateX(-14px); clip-path: inset(0 100% 0 0); }
+  60% { opacity: 1; clip-path: inset(0 20% 0 0); }
+  100% { opacity: 1; transform: none; clip-path: inset(0 0 0 0); }
 }
 .hero-idle-video {
   width: 340px;
@@ -309,21 +335,12 @@ body::after {
               0 0 40px rgba(255,45,120,0.3), 0 0 80px rgba(255,45,120,0.1);
   animation: imgFloat 3s ease-in-out infinite;
 }
-.dialogue-box::before {
-  content: '► ';
-  position: absolute;
-  left: 16px; bottom: -20px;
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  color: var(--pixel-white);
-  animation: blink 0.8s step-end infinite;
-}
 .dialogue-text {
   font-family: var(--font-vt);
-  font-size: clamp(25px, 2.2vw, 34px);
+  font-size: clamp(20px, 2.4vw, 30px);
   font-weight: 700;
   color: #f8fbff;
-  line-height: 1.08;
+  line-height: 1.15;
   letter-spacing: 0;
   text-wrap: balance;
   text-shadow:
@@ -331,13 +348,14 @@ body::after {
     2px 2px 0 rgba(255,45,120,0.38);
 }
 .sleep-better-banner {
-  width: 100%;
-  height: auto;
+  width: 92px;
+  height: 92px;
+  flex: 0 0 auto;
   display: block;
-  margin-bottom: 14px;
-  border: 2px solid var(--pixel-cyan);
+  object-fit: cover;
+  border: 3px solid var(--pixel-cyan);
   background: #050711;
-  box-shadow: 3px 3px 0 rgba(255,45,120,0.55), 0 0 18px rgba(0,255,255,0.18);
+  box-shadow: 4px 4px 0 rgba(255,45,120,0.55), 0 0 22px rgba(0,255,255,0.22);
   image-rendering: auto;
 }
 .hero-name-block {
@@ -374,7 +392,7 @@ body::after {
   image-rendering: auto;
 }
 .hero-class-row {
-  display: flex; align-items: center; gap: 12px; margin-top: 12px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 12px;
 }
 .class-badge {
   font-family: var(--font-pixel);
@@ -450,25 +468,32 @@ body::after {
 }
 .btn-px-secondary:hover { box-shadow: 6px 6px 0 rgba(0,255,255,0.4); }
 .start-game-btn {
+  border-width: 4px;
   border-color: var(--pixel-yellow);
   background: var(--pixel-yellow);
   color: var(--bg);
-  box-shadow: 4px 4px 0 rgba(255,45,120,0.55), 0 0 24px rgba(255,230,0,0.65);
+  box-shadow: 4px 4px 0 rgba(255,45,120,0.65), 0 0 30px rgba(255,230,0,0.85), 0 0 60px rgba(255,230,0,0.35);
   animation: startGlow 1.1s step-end infinite;
 }
 .start-game-btn:hover {
-  box-shadow: 7px 7px 0 rgba(255,45,120,0.75), 0 0 38px rgba(255,230,0,0.85);
+  box-shadow: 7px 7px 0 rgba(255,45,120,0.85), 0 0 46px rgba(255,230,0,1), 0 0 80px rgba(255,230,0,0.5);
 }
 @keyframes startGlow {
-  0%,100% { filter: brightness(1); }
-  50% { filter: brightness(1.35); }
+  0%,100% {
+    filter: brightness(1);
+    box-shadow: 4px 4px 0 rgba(255,45,120,0.65), 0 0 30px rgba(255,230,0,0.85), 0 0 60px rgba(255,230,0,0.35);
+  }
+  50% {
+    filter: brightness(1.5);
+    box-shadow: 4px 4px 0 rgba(255,45,120,0.85), 0 0 46px rgba(255,230,0,1), 0 0 90px rgba(255,230,0,0.5);
+  }
 }
 
 /* HERO RIGHT — IMAGE */
 .hero-right {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   grid-column: 2;
-  grid-row: 2;
+  grid-row: 1;
   gap: 28px;
   position: relative; z-index: 2;
   padding: 92px 40px 40px 20px;
@@ -489,10 +514,14 @@ body::after {
   position: absolute;
   top: -28px; left: 50%;
   transform: translateX(-50%);
+  width: max-content;
+  max-width: min(260px, 90vw);
   font-family: var(--font-pixel);
   font-size: 6px;
   color: var(--pixel-yellow);
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.5;
   animation: blink 1.4s step-end infinite;
 }
 .hero-img-frame::after {
@@ -2532,8 +2561,8 @@ footer {
   .hero-stats-row { grid-template-columns: 1fr 1fr; }
   .hero-cta-row { flex-wrap: wrap; }
   .btn-px { font-size: 7px; padding: 10px 14px; }
-  .dialogue-box { max-width: 100%; }
   .dialogue-text { font-size: 18px; }
+  .sleep-better-banner { width: 60px; height: 60px; }
   .hero-idle-video {
     width: 220px;
     height: 220px;
@@ -2780,11 +2809,12 @@ footer {
     padding: 13px 6px;
     font-size: 7px;
   }
-  .dialogue-box {
-    padding: 16px;
-  }
   .dialogue-text {
-    font-size: 22px;
+    font-size: 18px;
+  }
+  .sleep-better-banner {
+    width: 60px;
+    height: 60px;
   }
   .hero-stats-row {
     grid-template-columns: 1fr;
@@ -2997,7 +3027,7 @@ footer {
 }
 .start-game-quest-hint {
   max-width: 300px;
-  margin-top: -18px;
+  margin-bottom: -20px;
   padding: 7px 10px;
   font-family: var(--font-vt);
   font-size: 17px;
@@ -3174,7 +3204,7 @@ footer {
   }
   .start-game-quest-hint {
     max-width: 210px;
-    margin-top: -10px;
+    margin-bottom: -10px;
     padding: 6px 7px;
     font-size: 14px;
     line-height: 1.1;
@@ -3199,7 +3229,7 @@ footer {
     font-size: 7px;
   }
   .dialogue-text {
-    font-size: 19px;
+    font-size: 16px;
   }
   .about-character-card {
     padding: 26px 14px 18px;
@@ -3310,6 +3340,18 @@ footer {
   </div>
 </div>
 
+<!-- SLEEP-BETTER TAGLINE BANNER (revealed on first scroll) -->
+<div class="dialogue-box">
+  <div class="hero-dialogue-content">
+    <img
+      src="assets/sleep-better-banner.png"
+      alt="Sleeping rabbit and determined marketing turtle racing toward a finish line"
+      class="sleep-better-banner"
+    >
+    <p class="dialogue-text">Won't let your brands sleep, so we sleep better</p>
+  </div>
+</div>
+
 <!-- HERO -->
 <section id="hero">
   <div class="hero-pixel-bg"></div>
@@ -3319,17 +3361,6 @@ footer {
   <div class="coin-float" style="top:35%;left:4%;--cd:4s;--delay:1s">⭐</div>
   <div class="coin-float" style="top:65%;left:6%;--cd:6s;--delay:0.5s">💎</div>
   <div class="coin-float" style="top:20%;left:48%;--cd:3.5s;--delay:2s">🌟</div>
-
-  <div class="dialogue-box">
-    <div class="hero-dialogue-content">
-      <img
-        src="assets/sleep-better-banner.png"
-        alt="Sleeping rabbit and determined marketing turtle racing toward a finish line"
-        class="sleep-better-banner"
-      >
-      <p class="dialogue-text">Won't let your brands sleep, so we sleep better</p>
-    </div>
-  </div>
 
   <div class="hero-left">
     <div class="hero-name-block">
@@ -3382,8 +3413,8 @@ footer {
         class="hero-img"
         >
       </div>
-      <button type="button" class="btn-px btn-px-primary start-game-btn" data-start-brand-game>START GAME</button>
       <p class="start-game-quest-hint">WIN EXCLUSIVE DISCOUNTS BY COMPLETING THIS QUEST</p>
+      <button type="button" class="btn-px btn-px-primary start-game-btn" data-start-brand-game>START GAME</button>
     </div>
   </div>
 </section>
@@ -4196,6 +4227,24 @@ footer {
 </div>
 
 <script>
+// "WON'T LET YOUR BRANDS SLEEP" BANNER — unfolds on the first scroll down, then stays.
+const dialogueBanner = document.querySelector('.dialogue-box');
+if (dialogueBanner) {
+  let bannerRevealed = false;
+  const revealDialogueBanner = () => {
+    if (bannerRevealed) return;
+    bannerRevealed = true;
+    dialogueBanner.classList.add('is-visible');
+    window.removeEventListener('scroll', onBannerScroll);
+  };
+  const onBannerScroll = () => {
+    if (window.scrollY > 40) revealDialogueBanner();
+  };
+  window.addEventListener('scroll', onBannerScroll, { passive: true });
+  // Fallback: if the page loads already scrolled (refresh mid-page / anchor link), reveal immediately.
+  if (window.scrollY > 40) revealDialogueBanner();
+}
+
 // CUSTOM CURSOR
 const sword = document.getElementById('cursorSword');
 document.addEventListener('mousemove', e => {
