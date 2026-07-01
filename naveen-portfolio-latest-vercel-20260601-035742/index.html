@@ -4,18 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NAVEEN NAIR — PLAYER ONE</title>
-<!-- Vercel Speed Insights -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
-<script>
-  window.va = window.va || function () { 
-    (window.vaq = window.vaq || []).push(arguments); 
-  };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 <style>
 :root {
   --bg: #050510;
@@ -292,39 +281,46 @@ body::after {
   padding: 40px 32px 60px 40px;
   position: relative; z-index: 2;
 }
-/* "Won't let your brands sleep" banner: full-width strip between the video and the hero.
+/* MAIN QUEST banner: full-width strip between the video and the hero.
    Starts collapsed; expands open after the first scroll. */
 .dialogue-box {
   position: relative;
   z-index: 40;
   max-height: 0;
   overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(255,45,120,0.12), transparent 30%, transparent 70%, rgba(0,255,255,0.12)),
-    var(--bg2);
-  border-bottom: 0 solid var(--pixel-pink);
-  transition: max-height 0.6s ease, border-bottom-width 0.3s ease 0.3s;
+  background: #0a0704;
+  border-bottom: 0 solid var(--pixel-yellow);
+  transition: max-height 0.7s ease, border-bottom-width 0.3s ease 0.35s;
 }
 .dialogue-box.is-visible {
-  max-height: 320px;
+  max-height: 800px;
   border-bottom-width: 4px;
-  box-shadow: 0 4px 0 var(--pixel-pink), 0 0 30px rgba(255,45,120,0.2);
+  box-shadow: 0 4px 0 rgba(255,230,0,0.55), 0 0 34px rgba(255,180,40,0.18);
 }
 .hero-dialogue-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  max-width: 900px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 18px 20px;
+  padding: 22px 20px;
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 0.45s ease 0.25s, transform 0.45s ease 0.25s;
+  transition: opacity 0.45s ease 0.3s, transform 0.45s ease 0.3s;
 }
 .dialogue-box.is-visible .hero-dialogue-content {
   opacity: 1;
   transform: none;
+}
+.main-quest-banner {
+  width: min(100%, 1400px);
+  max-height: 720px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border: 3px solid rgba(255,200,80,0.55);
+  box-shadow: 5px 5px 0 rgba(126,72,200,0.5), 0 0 30px rgba(255,180,40,0.2);
+  image-rendering: auto;
 }
 .hero-idle-video {
   width: 340px;
@@ -338,30 +334,6 @@ body::after {
   box-shadow: 6px 6px 0 var(--bg), 12px 12px 0 var(--pixel-pink),
               0 0 40px rgba(255,45,120,0.3), 0 0 80px rgba(255,45,120,0.1);
   animation: imgFloat 3s ease-in-out infinite;
-}
-.dialogue-text {
-  font-family: var(--font-vt);
-  font-size: clamp(20px, 2.4vw, 30px);
-  font-weight: 700;
-  color: #f8fbff;
-  line-height: 1.15;
-  letter-spacing: 0;
-  text-wrap: balance;
-  text-shadow:
-    0 0 12px rgba(0,255,255,0.38),
-    2px 2px 0 rgba(255,45,120,0.38);
-}
-.sleep-better-banner {
-  height: 84px;
-  width: auto;
-  aspect-ratio: 3 / 1;
-  flex: 0 0 auto;
-  display: block;
-  object-fit: contain;
-  border: 3px solid var(--pixel-cyan);
-  background: #050711;
-  box-shadow: 4px 4px 0 rgba(255,45,120,0.55), 0 0 22px rgba(0,255,255,0.22);
-  image-rendering: auto;
 }
 .hero-name-block {
   margin: 24px 0 28px;
@@ -2567,13 +2539,8 @@ footer {
   .hero-cta-row { flex-wrap: wrap; }
   .btn-px { font-size: 7px; padding: 10px 14px; }
   .hero-dialogue-content {
-    flex-direction: column;
-    gap: 10px;
-    padding: 16px;
-    text-align: center;
+    padding: 12px 10px;
   }
-  .dialogue-text { font-size: 18px; }
-  .sleep-better-banner { height: auto; width: min(240px, 78vw); }
   .hero-idle-video {
     width: 220px;
     height: 220px;
@@ -2819,13 +2786,6 @@ footer {
     width: 100%;
     padding: 13px 6px;
     font-size: 7px;
-  }
-  .dialogue-text {
-    font-size: 18px;
-  }
-  .sleep-better-banner {
-    height: auto;
-    width: min(240px, 78vw);
   }
   .hero-stats-row {
     grid-template-columns: 1fr;
@@ -3239,9 +3199,6 @@ footer {
     padding: 10px 14px;
     font-size: 7px;
   }
-  .dialogue-text {
-    font-size: 16px;
-  }
   .about-character-card {
     padding: 26px 14px 18px;
   }
@@ -3351,15 +3308,14 @@ footer {
   </div>
 </div>
 
-<!-- SLEEP-BETTER TAGLINE BANNER (revealed on first scroll) -->
+<!-- MAIN QUEST BANNER (revealed on first scroll) -->
 <div class="dialogue-box">
   <div class="hero-dialogue-content">
     <img
-      src="assets/sleep-better-banner.png"
-      alt="Sleeping rabbit and determined marketing turtle racing toward a finish line"
-      class="sleep-better-banner"
+      src="assets/main-quest-banner.webp"
+      alt="Main Quest: My portfolio isn't about me. It's about the people who trusted me. The best quests end with the client winning. Play different. Build legacy."
+      class="main-quest-banner"
     >
-    <p class="dialogue-text">Won't let your brands sleep, so we sleep better</p>
   </div>
 </div>
 
