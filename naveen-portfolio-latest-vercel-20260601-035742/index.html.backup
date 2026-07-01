@@ -4,18 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NAVEEN NAIR — PLAYER ONE</title>
-<!-- Vercel Speed Insights -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
-<script>
-  window.va = window.va || function () { 
-    (window.vaq = window.vaq || []).push(arguments); 
-  };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 <style>
 :root {
   --bg: #050510;
@@ -61,6 +50,7 @@ body {
 }
 .cursor-sword svg { width: 24px; height: 24px; }
 .cursor-sword.clicking { filter: drop-shadow(0 0 6px var(--pixel-yellow)); transform: translate(-4px, -4px) rotate(20deg); }
+
 /* VIDEO BANNER */
 #video-banner {
   position: relative;
@@ -286,82 +276,34 @@ body::after {
 }
 .hero-left {
   display: flex; flex-direction: column;
-  justify-content: flex-start;
-  grid-column: 1;
-  grid-row: 1;
+  justify-content: center;
   padding: 40px 32px 60px 40px;
   position: relative; z-index: 2;
 }
-/* "Won't let your brands sleep" banner: full-width strip between the video and the hero.
-   Starts collapsed; expands open after the first scroll. */
 .dialogue-box {
+  background: var(--bg2);
+  border: 4px solid var(--pixel-white);
+  box-shadow: 4px 4px 0 var(--pixel-gray), 0 0 20px rgba(0,255,255,0.15);
+  padding: 20px 24px;
   position: relative;
-  z-index: 40;
-  max-height: 0;
-  overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(255,45,120,0.12), transparent 30%, transparent 70%, rgba(0,255,255,0.12)),
-    var(--bg2);
-  border-bottom: 0 solid var(--pixel-pink);
-  transition: max-height 0.6s ease, border-bottom-width 0.3s ease 0.3s;
+  margin-bottom: 32px;
+  max-width: 480px;
 }
-.dialogue-box.is-visible {
-  max-height: 320px;
-  border-bottom-width: 4px;
-  box-shadow: 0 4px 0 var(--pixel-pink), 0 0 30px rgba(255,45,120,0.2);
-}
-.hero-dialogue-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 18px 20px;
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.45s ease 0.25s, transform 0.45s ease 0.25s;
-}
-.dialogue-box.is-visible .hero-dialogue-content {
-  opacity: 1;
-  transform: none;
-}
-.hero-idle-video {
-  width: 340px;
-  height: 340px;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  image-rendering: auto;
-  border: 6px solid var(--pixel-pink);
-  background: #050711;
-  box-shadow: 6px 6px 0 var(--bg), 12px 12px 0 var(--pixel-pink),
-              0 0 40px rgba(255,45,120,0.3), 0 0 80px rgba(255,45,120,0.1);
-  animation: imgFloat 3s ease-in-out infinite;
+.dialogue-box::before {
+  content: '► ';
+  position: absolute;
+  left: 16px; bottom: -20px;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--pixel-white);
+  animation: blink 0.8s step-end infinite;
 }
 .dialogue-text {
   font-family: var(--font-vt);
-  font-size: clamp(20px, 2.4vw, 30px);
-  font-weight: 700;
-  color: #f8fbff;
-  line-height: 1.15;
-  letter-spacing: 0;
-  text-wrap: balance;
-  text-shadow:
-    0 0 12px rgba(0,255,255,0.38),
-    2px 2px 0 rgba(255,45,120,0.38);
-}
-.sleep-better-banner {
-  height: 84px;
-  width: auto;
-  aspect-ratio: 3 / 1;
-  flex: 0 0 auto;
-  display: block;
-  object-fit: contain;
-  border: 3px solid var(--pixel-cyan);
-  background: #050711;
-  box-shadow: 4px 4px 0 rgba(255,45,120,0.55), 0 0 22px rgba(0,255,255,0.22);
-  image-rendering: auto;
+  font-size: 22px;
+  color: var(--pixel-white);
+  line-height: 1.4;
+  letter-spacing: 0.03em;
 }
 .hero-name-block {
   margin: 24px 0 28px;
@@ -397,7 +339,7 @@ body::after {
   image-rendering: auto;
 }
 .hero-class-row {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 12px;
+  display: flex; align-items: center; gap: 12px; margin-top: 12px;
 }
 .class-badge {
   font-family: var(--font-pixel);
@@ -473,35 +415,26 @@ body::after {
 }
 .btn-px-secondary:hover { box-shadow: 6px 6px 0 rgba(0,255,255,0.4); }
 .start-game-btn {
-  border-width: 4px;
   border-color: var(--pixel-yellow);
   background: var(--pixel-yellow);
   color: var(--bg);
-  box-shadow: 4px 4px 0 rgba(255,45,120,0.65), 0 0 30px rgba(255,230,0,0.85), 0 0 60px rgba(255,230,0,0.35);
+  box-shadow: 4px 4px 0 rgba(255,45,120,0.55), 0 0 24px rgba(255,230,0,0.65);
   animation: startGlow 1.1s step-end infinite;
 }
 .start-game-btn:hover {
-  box-shadow: 7px 7px 0 rgba(255,45,120,0.85), 0 0 46px rgba(255,230,0,1), 0 0 80px rgba(255,230,0,0.5);
+  box-shadow: 7px 7px 0 rgba(255,45,120,0.75), 0 0 38px rgba(255,230,0,0.85);
 }
 @keyframes startGlow {
-  0%,100% {
-    filter: brightness(1);
-    box-shadow: 4px 4px 0 rgba(255,45,120,0.65), 0 0 30px rgba(255,230,0,0.85), 0 0 60px rgba(255,230,0,0.35);
-  }
-  50% {
-    filter: brightness(1.5);
-    box-shadow: 4px 4px 0 rgba(255,45,120,0.85), 0 0 46px rgba(255,230,0,1), 0 0 90px rgba(255,230,0,0.5);
-  }
+  0%,100% { filter: brightness(1); }
+  50% { filter: brightness(1.35); }
 }
 
 /* HERO RIGHT — IMAGE */
 .hero-right {
-  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-  grid-column: 2;
-  grid-row: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 28px;
   position: relative; z-index: 2;
-  padding: 92px 40px 40px 20px;
+  padding: 60px 40px 40px 20px;
 }
 .hero-img-frame {
   position: relative;
@@ -515,18 +448,14 @@ body::after {
   gap: 34px;
 }
 .hero-img-frame::before {
-  content: 'PERSONAL BRANDING: FINAL BOSS';
+  content: 'PLAYER 1';
   position: absolute;
   top: -28px; left: 50%;
   transform: translateX(-50%);
-  width: max-content;
-  max-width: min(260px, 90vw);
   font-family: var(--font-pixel);
-  font-size: 6px;
+  font-size: 8px;
   color: var(--pixel-yellow);
-  white-space: normal;
-  text-align: center;
-  line-height: 1.5;
+  white-space: nowrap;
   animation: blink 1.4s step-end infinite;
 }
 .hero-img-frame::after {
@@ -1371,469 +1300,85 @@ section.px-section {
   transform: translate(-2px,-2px);
   box-shadow: 4px 4px 0 var(--pixel-purple);
 }
-.career-roadmap {
-  padding: 24px;
-  background: var(--bg);
-  border: 3px solid var(--pixel-white);
-  box-shadow: 5px 5px 0 var(--pixel-gray);
+
+/* WORK GRID */
+#work { background: var(--bg); }
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
-.career-roadmap-title {
-  margin-bottom: 22px;
-  color: var(--pixel-yellow);
+.work-card {
+  background: var(--bg2);
+  border: 3px solid var(--pixel-gray);
+  box-shadow: 4px 4px 0 var(--pixel-gray);
+  padding: 28px 24px;
+  text-decoration: none;
+  display: flex; flex-direction: column; gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.1s;
+}
+.work-card:hover {
+  border-color: var(--pixel-cyan);
+  box-shadow: 6px 6px 0 var(--pixel-cyan);
+  transform: translate(-3px,-3px);
+  background: var(--bg);
+}
+.work-card:hover .work-card-num { color: var(--pixel-yellow); }
+.work-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--pixel-cyan);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s;
+}
+.work-card:hover::before { transform: scaleX(1); }
+.work-card-num {
   font-family: var(--font-pixel);
   font-size: 8px;
-  line-height: 1.6;
-}
-.career-path {
-  position: relative;
-  display: grid;
-  gap: 0;
-}
-.career-path::before {
-  content: "";
-  position: absolute;
-  top: 14px;
-  bottom: 14px;
-  left: 11px;
-  width: 3px;
-  background: var(--pixel-cyan);
-  box-shadow: 2px 0 0 var(--pixel-purple);
-}
-.career-level {
-  position: relative;
-  padding: 0 0 22px 42px;
-}
-.career-level:last-child { padding-bottom: 0; }
-.career-level::before {
-  content: "";
-  position: absolute;
-  top: 7px;
-  left: 4px;
-  width: 15px;
-  height: 15px;
-  background: var(--bg);
-  border: 3px solid var(--pixel-cyan);
-  box-shadow: 2px 2px 0 var(--pixel-purple);
-}
-.career-level.current::before {
-  background: var(--pixel-green);
-  border-color: var(--pixel-white);
-  box-shadow: 0 0 14px var(--pixel-green);
-}
-.career-date {
-  margin-bottom: 6px;
-  color: var(--pixel-pink);
-  font-family: var(--font-pixel);
-  font-size: 5px;
-}
-.career-role {
-  color: var(--pixel-white);
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  line-height: 1.6;
-}
-.career-company {
-  margin-top: 4px;
-  color: var(--pixel-cyan);
-  font-family: var(--font-vt);
-  font-size: 21px;
-}
-.career-note {
-  margin-top: 5px;
   color: var(--pixel-gray);
+  transition: color 0.1s;
+}
+.work-icon-px {
+  font-size: 28px;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.5));
+}
+.work-card-title {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--pixel-white);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+.work-card-desc {
   font-family: var(--font-vt);
-  font-size: 17px;
-  line-height: 1.35;
-}
-
-/* FEATURED PROJECT SHOWCASE */
-#work {
-  background: #050711;
-  position: relative;
-  overflow: hidden;
-}
-.project-console {
-  padding: 22px;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(119,61,190,0.22), transparent 34%),
-    radial-gradient(circle at 18% 20%, rgba(0,255,255,0.08), transparent 28%),
-    #05060d;
-  border: 3px solid rgba(210,206,255,0.58);
-  box-shadow: 0 0 0 5px #080b13, 0 0 38px rgba(126,72,200,0.35);
-  position: relative;
-  overflow: hidden;
-}
-.project-console::before {
-  content: "";
-  position: absolute;
-  width: min(64vw, 720px);
-  aspect-ratio: 1;
-  left: 50%;
-  top: 43%;
-  border: 2px solid rgba(164,134,220,0.16);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow:
-    0 0 0 34px rgba(164,134,220,0.035),
-    0 0 0 76px rgba(164,134,220,0.025);
-  pointer-events: none;
-}
-.project-console-top {
-  margin-bottom: 24px;
-  padding: 11px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  color: #e8e2f5;
-  background: rgba(2,4,10,0.72);
-  border: 1px solid rgba(210,206,255,0.3);
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  line-height: 1.5;
-  position: relative;
-  z-index: 2;
-}
-.project-console-light {
-  width: 10px;
-  height: 10px;
-  flex: 0 0 auto;
-  background: var(--pixel-green);
-  box-shadow: 0 0 12px var(--pixel-green);
-  animation: projectConsoleBlink 1.2s steps(2, end) infinite;
-}
-.project-active-label {
-  color: var(--pixel-yellow) !important;
-  white-space: nowrap;
-}
-@keyframes projectConsoleBlink {
-  50% { opacity: 0.25; }
-}
-.project-console-body {
-  display: block;
-  position: relative;
-  z-index: 2;
-}
-.project-menu-nav {
-  position: absolute;
-  top: 76px;
-  z-index: 4;
-  width: 44px;
-  height: 44px;
-  color: #d4d531;
-  background: rgba(5,4,12,0.94);
-  border: 2px solid #d4d531;
-  font-family: var(--font-pixel);
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 0 18px rgba(212,213,49,0.18);
-}
-.project-menu-nav:hover {
-  color: #05060d;
-  background: #d4d531;
-}
-.project-menu-nav.prev { left: 8px; }
-.project-menu-nav.next { right: 8px; }
-@media (min-width: 901px) {
-  .project-menu-nav {
-    display: none;
-  }
-}
-.project-switcher {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin: 0 -22px 28px;
-  padding: 24px 34px;
-  width: 100%;
-  box-sizing: content-box;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  background: rgba(3,3,10,0.5);
-  border-top: 1px solid rgba(210,206,255,0.28);
-  border-bottom: 1px solid rgba(210,206,255,0.28);
-  box-shadow: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 44px, #000 calc(100% - 44px), transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 44px, #000 calc(100% - 44px), transparent 100%);
-}
-.project-switcher::-webkit-scrollbar {
-  display: none;
-}
-.project-tab {
-  flex: 0 0 168px;
-  min-height: 0;
-  scroll-snap-align: center;
-  scroll-margin-inline: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: center;
-  padding: 10px;
-  color: rgba(232,226,245,0.52);
-  background: rgba(10,8,18,0.72);
-  border: 2px solid rgba(210,206,255,0.28);
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  line-height: 1.5;
-  cursor: pointer;
-  opacity: 0.58;
-  transform: scale(0.9);
-  position: relative;
-  transition: background 0.24s ease, color 0.24s ease, transform 0.24s ease, opacity 0.24s ease, border-color 0.24s ease;
-}
-.project-tab-thumb {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background-size: cover;
-  background-position: top center;
-  background-color: #080b13;
-  border: 2px solid rgba(210,206,255,0.2);
-  filter: saturate(0.7) brightness(0.82);
-  transition: filter 0.24s ease, border-color 0.24s ease;
-}
-.project-tab-thumb img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: top center;
-}
-.project-tab-thumb-poster {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-pixel);
   font-size: 18px;
-  color: var(--pixel-yellow);
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.55);
-}
-.project-tab-label {
-  display: block;
-}
-.project-tab:hover,
-.project-tab.is-active {
-  color: #f3efc3;
-  background: rgba(8,6,15,0.96);
-  border-color: #d4d531;
-  opacity: 1;
-  transform: scale(1.08);
-  box-shadow: 0 0 0 4px rgba(212,213,49,0.13), 0 0 30px rgba(126,72,200,0.42);
-}
-.project-tab:hover .project-tab-thumb,
-.project-tab.is-active .project-tab-thumb {
-  filter: saturate(1) brightness(1);
-  border-color: #d4d531;
-}
-.project-tab::before {
-  content: "◆";
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  z-index: 2;
-  color: #d4d531;
-  text-shadow: 0 0 6px rgba(212,213,49,0.85), 1px 1px 0 rgba(0,0,0,0.6);
-  opacity: 0;
-}
-.project-tab.is-active::before { opacity: 1; }
-.project-panels {
-  max-width: 1080px;
-  margin: 0 auto;
-}
-.project-console-loader {
-  margin-top: 18px;
-  padding: 12px 14px;
-  display: grid;
-  grid-template-columns: auto minmax(100px, 1fr) auto;
-  align-items: center;
-  gap: 12px;
-  color: #d4d531;
-  background: rgba(2,4,10,0.82);
-  border: 1px solid rgba(210,206,255,0.28);
-  font-family: var(--font-pixel);
-  font-size: 5px;
-}
-.project-loading-track {
-  height: 12px;
-  overflow: hidden;
-  background: #111522;
-  border: 1px solid rgba(210,206,255,0.5);
-}
-.project-loading-fill {
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    #d4d531 0 12px,
-    #7d4fb7 12px 16px
-  );
-  transform-origin: left;
-}
-.project-console.is-loading .project-loading-fill {
-  animation: projectLoad 0.55s steps(8, end);
-}
-@keyframes projectLoad {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-.project-panel {
-  display: none;
-  grid-template-columns: minmax(230px, 0.7fr) minmax(0, 1.7fr);
-  gap: 22px;
-  align-items: stretch;
-}
-.project-panel.is-active {
-  display: grid;
-  animation: projectPanelIn 0.32s ease both;
-}
-@keyframes projectPanelIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.project-summary {
-  padding: 26px;
-  background: var(--bg);
-  border: 3px solid var(--pixel-pink);
-  box-shadow: 6px 6px 0 var(--pixel-pink);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-}
-.project-index {
-  color: var(--pixel-cyan);
-  font-family: var(--font-pixel);
-  font-size: 6px;
-}
-.project-name {
-  margin-top: 16px;
-  color: var(--pixel-yellow);
-  font-family: var(--font-pixel);
-  font-size: clamp(14px, 2vw, 22px);
-  line-height: 1.45;
-  text-shadow: 3px 3px 0 var(--pixel-purple);
-}
-.project-description {
-  color: var(--pixel-white);
-  font-family: var(--font-vt);
-  font-size: 24px;
-  line-height: 1.35;
-}
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.project-tags span {
-  padding: 7px 9px;
-  color: var(--pixel-green);
-  background: rgba(57,255,20,0.08);
-  border: 1px solid var(--pixel-green);
-  font-family: var(--font-pixel);
-  font-size: 5px;
-}
-.project-media-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-.project-media-card {
-  min-width: 0;
-  background: var(--bg);
-  border: 3px solid #252b3c;
-  box-shadow: 5px 5px 0 #111522;
-  text-decoration: none;
-  overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.project-media-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--pixel-yellow);
-  box-shadow: 7px 7px 0 var(--pixel-purple), 0 0 24px rgba(255,230,0,0.18);
-}
-.project-media-card img {
-  width: 100%;
-  height: 320px;
-  display: block;
-  object-fit: contain;
-  object-position: top center;
-  background: #080b13;
-  image-rendering: auto;
-}
-.project-poster {
-  min-height: 320px;
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 28px;
-  color: var(--pixel-white);
-  background:
-    linear-gradient(135deg, rgba(0,255,255,0.12), transparent 45%),
-    repeating-linear-gradient(0deg, #080b13 0 12px, #0e1423 12px 14px);
-}
-.project-poster-symbol {
-  color: var(--pixel-yellow);
-  font-family: var(--font-pixel);
-  font-size: clamp(38px, 7vw, 74px);
-  line-height: 1;
-  text-shadow: 5px 5px 0 var(--pixel-purple);
-}
-.project-poster-name {
-  max-width: 15ch;
-  font-family: var(--font-pixel);
-  font-size: clamp(13px, 2vw, 20px);
-  line-height: 1.55;
-}
-.project-poster[data-theme="pink"],
-.project-tab-thumb-poster[data-theme="pink"] {
-  background:
-    linear-gradient(135deg, rgba(255,45,120,0.28), transparent 50%),
-    repeating-linear-gradient(90deg, #100812 0 14px, #1b0a1b 14px 16px);
-}
-.project-poster[data-theme="green"],
-.project-tab-thumb-poster[data-theme="green"] {
-  background:
-    linear-gradient(135deg, rgba(57,255,20,0.22), transparent 50%),
-    repeating-linear-gradient(0deg, #07110c 0 14px, #0b1e13 14px 16px);
-}
-.project-poster[data-theme="orange"],
-.project-tab-thumb-poster[data-theme="orange"] {
-  background:
-    linear-gradient(135deg, rgba(255,140,0,0.3), transparent 50%),
-    repeating-linear-gradient(90deg, #130c05 0 14px, #211205 14px 16px);
-}
-.project-poster[data-theme="meme"],
-.project-tab-thumb-poster[data-theme="meme"] {
-  background:
-    linear-gradient(135deg, rgba(255,230,0,0.24), transparent 50%),
-    repeating-linear-gradient(0deg, #14101a 0 14px, #1f1826 14px 16px);
-}
-.project-media-info {
-  min-height: 88px;
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  border-top: 3px solid var(--pixel-cyan);
-}
-.project-media-title {
-  color: var(--pixel-white);
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  color: var(--pixel-gray);
   line-height: 1.5;
 }
-.project-media-action {
-  color: var(--pixel-yellow);
-  font-family: var(--font-pixel);
-  font-size: 5px;
-  white-space: nowrap;
+.work-card-footer {
+  margin-top: auto;
+  display: flex; justify-content: space-between; align-items: center;
 }
+.work-tag-px {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  padding: 4px 8px;
+  background: var(--pixel-dark);
+  color: var(--pixel-cyan);
+  border: 2px solid var(--pixel-cyan);
+}
+.work-arrow-px {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--pixel-green);
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.work-card:hover .work-arrow-px { opacity: 1; }
 
 /* EXPERTISE */
 #expertise { background: var(--bg2); }
@@ -1932,74 +1477,34 @@ section.px-section {
   line-height: 1.35;
   margin-bottom: 0;
 }
-.stats-slider-window,
-.cert-slider-window {
-  margin-top: 28px;
-  overflow: hidden;
-  position: relative;
-  padding: 10px 0 18px;
-}
-.cert-slider-window {
-  margin-top: 0;
-}
-.stats-slider-window::before,
-.stats-slider-window::after,
-.cert-slider-window::before,
-.cert-slider-window::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: clamp(28px, 6vw, 76px);
-  z-index: 3;
-  pointer-events: none;
-}
-.stats-slider-window::before,
-.cert-slider-window::before {
-  left: 0;
-  background: linear-gradient(90deg, var(--bg2), transparent);
-}
-.stats-slider-window::after,
-.cert-slider-window::after {
-  right: 0;
-  background: linear-gradient(270deg, var(--bg2), transparent);
-}
 .stats-assets-grid {
-  display: flex;
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
-  width: max-content;
-  align-items: center;
-  padding: 18px max(22px, 8vw);
-  will-change: transform;
 }
 .stats-asset-card {
-  flex: 0 0 clamp(620px, 72vw, 980px);
-  background: var(--pixel-white);
-  border: 3px solid var(--pixel-white);
-  box-shadow: 5px 5px 0 var(--pixel-cyan);
-  padding: 8px;
+  background: var(--bg);
+  border: 4px solid var(--pixel-pink);
+  box-shadow: 6px 6px 0 var(--pixel-pink);
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  transform: none;
-  opacity: 1;
-  filter: none;
-  transition: none;
-  will-change: auto;
 }
 .stats-asset-card.featured {
-  flex-basis: clamp(620px, 72vw, 980px);
+  grid-column: span 1;
 }
 .stats-asset-media {
   flex: 1;
   min-height: 0;
   background: var(--pixel-white);
-  border: 0;
-  overflow: visible;
+  border: 3px solid var(--pixel-cyan);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: none;
+  box-shadow: 0 0 0 4px var(--pixel-white);
 }
 .stats-asset-media img {
   width: 100%;
@@ -2009,9 +1514,6 @@ section.px-section {
   object-fit: contain;
   background: var(--pixel-white);
   image-rendering: auto;
-  filter: none;
-  opacity: 1;
-  transform: none;
 }
 .stats-asset-label {
   margin-top: 14px;
@@ -2186,26 +1688,17 @@ section.px-section {
 /* CERTIFICATIONS */
 #certifications { background: var(--bg2); }
 .cert-grid-px {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  width: max-content;
-  align-items: center;
-  padding: 18px max(22px, 8vw);
-  will-change: transform;
 }
 .cert-card-px {
-  flex: 0 0 clamp(320px, 42vw, 560px);
   background: var(--bg);
   border: 4px solid var(--pixel-yellow);
   box-shadow: 6px 6px 0 var(--pixel-orange);
   padding: 18px;
   display: flex;
   flex-direction: column;
-  transform: scale(0.9);
-  transform-origin: center center;
-  opacity: 0.72;
-  transition: transform 0.26s ease, opacity 0.26s ease, filter 0.26s ease, box-shadow 0.26s ease;
-  will-change: transform, opacity, filter;
 }
 .cert-image-px {
   min-height: 320px;
@@ -2257,113 +1750,27 @@ section.px-section {
   color: var(--pixel-yellow);
   letter-spacing: 0.08em;
 }
-.stats-asset-card.is-focus,
-.cert-card-px.is-focus {
-  opacity: 1;
-  filter: saturate(1.08) brightness(1.08);
-}
-.stats-asset-card.is-focus {
-  opacity: 1;
-  filter: none;
-  transform: none;
-  box-shadow: 5px 5px 0 var(--pixel-cyan);
-}
-.cert-card-px.is-focus {
-  box-shadow: 9px 9px 0 var(--pixel-orange), 0 0 32px rgba(255,230,0,0.38), 0 0 0 5px rgba(255,255,255,0.1);
-}
-@media (prefers-reduced-motion: reduce) {
-  .stats-slider-window,
-  .cert-slider-window {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-  }
-  .stats-asset-card,
-  .cert-card-px {
-    scroll-snap-align: start;
-  }
-}
 
 /* SOCIAL */
 #social { background: var(--bg2); }
-.social-shell-px {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-.social-toolbar-px {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 18px;
-  margin-bottom: 18px;
-  padding: 14px;
-  background: var(--bg);
-  border: 3px solid var(--pixel-cyan);
-  box-shadow: 5px 5px 0 var(--pixel-cyan);
-}
-.social-tabs-px {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.social-tab-px {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: var(--pixel-cyan);
-  background: var(--bg2);
-  border: 2px solid var(--pixel-cyan);
-  box-shadow: 3px 3px 0 var(--pixel-purple);
-  padding: 10px 12px;
-  cursor: pointer;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
-}
-.social-tab-px:hover,
-.social-tab-px.is-active {
-  transform: translate(-2px, -2px);
-  background: var(--pixel-cyan);
-  color: var(--bg);
-  box-shadow: 5px 5px 0 var(--pixel-purple);
-}
 .social-grid-px {
-  display: flex;
-  gap: 18px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 8px 6px 24px;
-  scroll-snap-type: x mandatory;
-  scrollbar-color: var(--pixel-purple) var(--bg);
-  scrollbar-width: thin;
-}
-.social-grid-px::-webkit-scrollbar {
-  height: 12px;
-}
-.social-grid-px::-webkit-scrollbar-track {
-  background: var(--bg);
-  border: 2px solid var(--pixel-purple);
-}
-.social-grid-px::-webkit-scrollbar-thumb {
-  background: var(--pixel-purple);
-  border: 2px solid var(--bg);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 .social-card-px {
-  flex: 0 0 clamp(280px, 31vw, 380px);
-  scroll-snap-align: center;
   background: var(--bg);
   border: 3px solid var(--pixel-purple);
   box-shadow: 5px 5px 0 var(--pixel-purple);
-  padding: 24px 22px;
+  padding: 28px 24px;
   text-decoration: none;
   display: flex; flex-direction: column; gap: 12px;
-  transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease, filter 0.16s ease;
+  transition: all 0.1s;
   position: relative;
-  min-height: 245px;
 }
 .social-card-px:hover {
   transform: translate(-3px,-3px);
   box-shadow: 8px 8px 0 var(--pixel-purple);
-  filter: brightness(1.08);
-}
-.social-card-px.is-hidden {
-  display: none;
 }
 .social-platform-px {
   font-family: var(--font-pixel);
@@ -2566,18 +1973,8 @@ footer {
   .hero-stats-row { grid-template-columns: 1fr 1fr; }
   .hero-cta-row { flex-wrap: wrap; }
   .btn-px { font-size: 7px; padding: 10px 14px; }
-  .hero-dialogue-content {
-    flex-direction: column;
-    gap: 10px;
-    padding: 16px;
-    text-align: center;
-  }
+  .dialogue-box { max-width: 100%; }
   .dialogue-text { font-size: 18px; }
-  .sleep-better-banner { height: auto; width: min(240px, 78vw); }
-  .hero-idle-video {
-    width: 220px;
-    height: 220px;
-  }
 
   /* SECTIONS */
   section.px-section { padding: 48px 16px; }
@@ -2588,68 +1985,15 @@ footer {
   .char-name-big { font-size: 12px; }
 
   /* WORK */
-  .project-console { padding: 12px; }
-  .project-console-top { align-items: flex-start; font-size: 5px; }
-  .project-menu-nav {
-    top: 62px;
-    width: 36px;
-    height: 36px;
-    font-size: 12px;
-  }
-  .project-menu-nav.prev { left: 0; }
-  .project-menu-nav.next { right: 0; }
-  .project-switcher {
-    width: auto;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    margin: 0 -12px 20px;
-    padding: 20px 24px;
-    scroll-snap-type: x mandatory;
-  }
-  .project-tab {
-    flex: 0 0 200px;
-    min-width: 200px;
-    min-height: 0;
-    text-align: center;
-    padding: 10px;
-    font-size: 6px;
-  }
-  .project-panels { margin-top: 0; }
-  .project-console-loader {
-    grid-template-columns: 1fr auto;
-  }
-  .project-loader-label { grid-column: 1 / -1; }
-  .project-panel.is-active { display: block; }
-  .project-summary { padding: 20px; margin-bottom: 16px; }
-  .project-media-grid {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 6px 5px 18px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-    scrollbar-color: var(--pixel-purple) var(--bg);
-    -webkit-overflow-scrolling: touch;
-  }
-  .project-media-grid::-webkit-scrollbar { height: 10px; }
-  .project-media-grid::-webkit-scrollbar-track { background: var(--bg); }
-  .project-media-grid::-webkit-scrollbar-thumb { background: var(--pixel-purple); }
-  .project-media-card {
-    flex: 0 0 min(84vw, 340px);
-    scroll-snap-align: center;
-  }
-  .project-media-card img { height: 300px; max-height: none; object-fit: contain; }
-  .project-poster { min-height: 300px; }
+  .work-grid { grid-template-columns: 1fr; gap: 14px; }
+  .work-card { padding: 20px 16px; }
 
   /* EXPERTISE */
   .expertise-row-px { grid-template-columns: 1fr; gap: 8px; padding: 14px 12px; }
   .exp-name-px { font-size: 7px; }
   .exp-level-px { text-align: left; }
   .stats-showcase { max-width: 100%; }
-  .stats-assets-grid { gap: 16px; }
-  .stats-asset-card,
-  .stats-asset-card.featured { flex-basis: min(92vw, 720px); }
+  .stats-assets-grid { grid-template-columns: 1fr; }
   .stats-asset-card.featured { grid-column: span 1; }
 
   /* CLIENTS */
@@ -2658,11 +2002,8 @@ footer {
   .client-px-name { font-size: 22px; }
 
   /* SOCIAL */
-  .cert-grid-px { gap: 16px; }
-  .cert-card-px { flex-basis: min(86vw, 390px); }
-  .social-toolbar-px { align-items: stretch; flex-direction: column; }
-  .social-grid-px { gap: 14px; padding-bottom: 18px; }
-  .social-card-px { flex-basis: min(84vw, 340px); min-height: 230px; }
+  .cert-grid-px { grid-template-columns: 1fr; gap: 14px; }
+  .social-grid-px { grid-template-columns: 1fr; gap: 14px; }
   .social-handle-px { font-size: 10px; }
 
   /* CONTACT */
@@ -2682,10 +2023,6 @@ footer {
   #nav .nav-logo { font-size: 9px; }
   .hero-img { width: 160px; height: 160px; }
   .hero-name { font-size: clamp(20px, 8vw, 30px); }
-  .hero-idle-video {
-    width: 160px;
-    height: 160px;
-  }
   .hero-stats-row { grid-template-columns: 1fr 1fr; gap: 8px; }
   .stat-box-val { font-size: 10px; }
   .clients-grid { grid-template-columns: 1fr 1fr; }
@@ -2695,597 +2032,6 @@ footer {
 
 /* PIXEL TEXT SELECTION */
 ::selection { background: var(--pixel-cyan); color: var(--bg); }
-/* INTERACTIVE CAREER ROADMAP */
-.career-roadmap {
-  --career-progress: 0%;
-  padding: 28px;
-  border-color: var(--pixel-cyan);
-  box-shadow: 7px 7px 0 var(--pixel-purple);
-}
-.career-roadmap-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 14px;
-}
-.career-roadmap-title {
-  margin: 0;
-  font-size: 10px;
-}
-.career-roadmap-count {
-  color: var(--pixel-green);
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  white-space: nowrap;
-}
-.career-progress-track {
-  height: 16px;
-  margin-bottom: 28px;
-  overflow: hidden;
-  background: #050711;
-  border: 2px solid var(--pixel-gray);
-}
-.career-progress-fill {
-  width: var(--career-progress);
-  height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--pixel-green) 0 15px,
-    var(--pixel-cyan) 15px 19px
-  );
-  box-shadow: 0 0 14px rgba(57,255,20,0.5);
-  transition: width 0.18s linear;
-}
-.career-path::before {
-  background: #263247;
-  box-shadow: none;
-}
-.career-path::after {
-  content: "";
-  position: absolute;
-  top: 14px;
-  left: 11px;
-  width: 3px;
-  height: var(--career-progress);
-  max-height: calc(100% - 28px);
-  background: var(--pixel-green);
-  box-shadow: 0 0 10px var(--pixel-green);
-  transition: height 0.18s linear;
-}
-.career-level {
-  padding: 0 0 30px 48px;
-  opacity: 0.28;
-  transform: translateX(22px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.career-level.unlocked {
-  opacity: 1;
-  transform: translateX(0);
-}
-.career-level.unlocked::before {
-  background: var(--pixel-green);
-  border-color: var(--pixel-white);
-  box-shadow: 0 0 13px var(--pixel-green);
-}
-.career-date {
-  margin-bottom: 9px;
-  font-size: 7px;
-  line-height: 1.6;
-}
-.career-role {
-  font-size: 10px;
-  line-height: 1.55;
-}
-.career-company {
-  margin-top: 7px;
-  font-size: 28px;
-  line-height: 1.1;
-}
-.career-note {
-  max-width: 54ch;
-  margin-top: 9px;
-  color: #c6cbd5;
-  font-size: 21px;
-  line-height: 1.35;
-}
-
-@media (max-width: 900px) {
-  /* Keep the Player 1 animation visible beside the hero copy. */
-  #hero {
-    grid-template-columns: minmax(0, 1.15fr) minmax(150px, 0.85fr);
-    align-items: start;
-    padding-top: 76px;
-  }
-  .hero-left {
-    min-width: 0;
-    padding: 34px 10px 36px 16px;
-  }
-  .hero-right {
-    min-width: 0;
-    padding: 72px 14px 28px 4px;
-    justify-content: flex-start;
-  }
-  .hero-visual-row {
-    width: 100%;
-    gap: 28px;
-  }
-  .hero-idle-video {
-    width: min(100%, 250px);
-    height: auto;
-    aspect-ratio: 1;
-  }
-  .exit-game-btn {
-    width: 100%;
-    padding: 13px 6px;
-    font-size: 7px;
-  }
-  .dialogue-text {
-    font-size: 18px;
-  }
-  .sleep-better-banner {
-    height: auto;
-    width: min(240px, 78vw);
-  }
-  .hero-stats-row {
-    grid-template-columns: 1fr;
-  }
-
-  .career-roadmap {
-    padding: 20px 16px;
-  }
-  .career-roadmap-head {
-    display: block;
-  }
-  .career-roadmap-title {
-    font-size: 8px;
-  }
-  .career-roadmap-count {
-    margin-top: 10px;
-    font-size: 5px;
-  }
-  .career-role {
-    font-size: 8px;
-  }
-  .career-company {
-    font-size: 25px;
-  }
-  .career-note {
-    font-size: 19px;
-  }
-
-}
-
-@media (max-width: 480px) {
-  #hero {
-    grid-template-columns: minmax(0, 1.08fr) minmax(145px, 0.92fr);
-  }
-  .hero-left {
-    padding-left: 10px;
-  }
-  .hero-right {
-    padding-right: 8px;
-  }
-  .hero-idle-video {
-    width: 100%;
-    max-width: 190px;
-    height: auto;
-  }
-  .hero-name {
-    font-size: clamp(17px, 5.5vw, 24px);
-  }
-  .hero-signature {
-    width: min(150px, 42vw);
-  }
-  .hero-cta-row {
-    display: grid;
-  }
-}
-
-/* FINAL RESPONSIVE POLISH */
-.about-character-card {
-  overflow: hidden;
-}
-.about-character-card.is-scanning {
-  animation: characterPanelBoot 0.55s steps(5, end) both;
-}
-.about-character-card.is-scanning::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0,255,255,0.1) 46%,
-    rgba(0,255,255,0.55) 50%,
-    rgba(0,255,255,0.1) 54%,
-    transparent 100%
-  );
-  transform: translateY(-105%);
-  animation: characterScan 1.15s steps(14, end) 0.15s both;
-}
-@keyframes characterPanelBoot {
-  0% { opacity: 0.3; transform: translateY(10px); filter: brightness(0.5); }
-  60% { opacity: 1; filter: brightness(1.45); }
-  100% { opacity: 1; transform: none; filter: none; }
-}
-@keyframes characterScan {
-  to { transform: translateY(105%); }
-}
-.about-character-card .stat-bar-fill {
-  width: 0 !important;
-  transition: width 1s steps(18, end);
-}
-.about-character-card.stats-loaded .stat-bar-fill {
-  width: var(--stat-target) !important;
-}
-.about-character-card.stats-loaded .char-stat-row {
-  animation: statRowOnline 0.35s ease both;
-  animation-delay: calc(var(--stat-index) * 90ms);
-}
-@keyframes statRowOnline {
-  from { opacity: 0.25; transform: translateX(-12px); }
-  to { opacity: 1; transform: none; }
-}
-
-/* Readable About Player HUD. */
-.about-grid {
-  grid-template-columns: minmax(340px, 0.95fr) minmax(0, 1.6fr);
-  gap: 44px;
-}
-.about-character-card {
-  padding: 32px 26px 26px;
-  background:
-    linear-gradient(rgba(7,8,22,0.98), rgba(5,5,16,0.98)),
-    repeating-linear-gradient(0deg, transparent 0 4px, rgba(0,255,255,0.04) 4px 5px);
-  border-width: 3px;
-  box-shadow: 7px 7px 0 rgba(255,110,0,0.78), 0 0 24px rgba(255,230,0,0.08);
-}
-.about-character-card::before {
-  font-family: var(--font-vt);
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.about-character-card .char-name-big {
-  font-family: var(--font-vt);
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 0.92;
-  letter-spacing: 0;
-  margin-bottom: 10px;
-}
-.about-character-card .char-class {
-  display: inline-block;
-  width: fit-content;
-  margin-bottom: 24px;
-  padding: 5px 8px;
-  font-family: var(--font-vt);
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1;
-  color: #fff;
-  background: rgba(255,45,120,0.15);
-  border-left: 3px solid var(--pixel-pink);
-}
-.about-character-card .char-stats {
-  gap: 10px;
-}
-.about-character-card .char-stat-row {
-  gap: 7px;
-  padding: 10px 11px;
-  background: rgba(15,18,38,0.72);
-  border: 1px solid rgba(160,184,203,0.24);
-  border-left: 3px solid rgba(0,255,255,0.7);
-  transition: border-color 0.18s ease, background 0.18s ease;
-}
-.about-character-card .char-stat-row:hover {
-  background: rgba(19,24,49,0.94);
-  border-left-color: var(--pixel-yellow);
-}
-.about-character-card .char-stat-label {
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-vt);
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: 0;
-  color: #eef5fa;
-  text-shadow: none;
-}
-.about-character-card .char-stat-label span {
-  flex: 0 0 auto;
-  min-width: 36px;
-  margin-left: auto;
-  padding: 1px 5px;
-  color: var(--pixel-yellow);
-  background: rgba(255,230,0,0.08);
-  border: 1px solid rgba(255,230,0,0.55);
-  text-align: center;
-  text-shadow: none;
-  box-shadow: none;
-}
-.about-character-card .stat-bar {
-  height: 11px;
-  background: #090b18;
-  border: 1px solid rgba(217,232,239,0.58);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.55);
-}
-.about-character-card .stat-bar-fill {
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.22);
-}
-
-/* Swap hero game controls while preserving their original actions. */
-.hero-cta-row .exit-game-btn {
-  width: auto;
-  min-width: 0;
-  padding: 12px 20px;
-  border-width: 3px;
-  font-size: 8px;
-  box-shadow: 4px 4px 0 var(--bg), 7px 7px 0 var(--pixel-pink), 0 0 20px rgba(255,230,0,0.4);
-}
-.hero-right .start-game-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 300px;
-  min-height: 58px;
-  font-size: clamp(9px, 1.05vw, 13px);
-  letter-spacing: 0.08em;
-}
-.start-game-quest-hint {
-  max-width: 300px;
-  margin-bottom: -20px;
-  padding: 7px 10px;
-  font-family: var(--font-vt);
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.15;
-  color: #fff;
-  background: rgba(5,5,16,0.92);
-  border: 1px solid var(--pixel-cyan);
-  text-align: center;
-  text-shadow: 0 0 7px rgba(0,255,255,0.8);
-  box-shadow: 3px 3px 0 rgba(0,255,255,0.28);
-}
-.hero-img-frame::before {
-  top: -38px;
-  z-index: 4;
-  padding: 6px 10px;
-  font-family: var(--font-vt);
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1;
-  color: #fff16a;
-  background: rgba(5,5,16,0.96);
-  border: 2px solid var(--pixel-yellow);
-  text-shadow: 0 0 7px rgba(255,230,0,0.75);
-  box-shadow: 3px 3px 0 rgba(255,45,120,0.65);
-  animation: none;
-}
-.hero-stats-row .stat-box {
-  min-width: 0;
-  padding: 11px 12px;
-  background: rgba(5,5,16,0.95);
-  border-color: rgba(0,255,255,0.55);
-  overflow: hidden;
-  animation: heroStatGlitch 5.2s steps(1, end) infinite;
-}
-.hero-stats-row .stat-box:nth-child(2) { animation-delay: -1.3s; }
-.hero-stats-row .stat-box:nth-child(3) { animation-delay: -2.6s; }
-.hero-stats-row .stat-box:nth-child(4) { animation-delay: -3.9s; }
-.hero-stats-row .stat-box::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  background:
-    linear-gradient(90deg, transparent 0 9%, rgba(255,45,120,0.28) 9% 38%, transparent 38% 63%, rgba(0,255,255,0.24) 63% 91%, transparent 91%),
-    linear-gradient(180deg, transparent 0 46%, rgba(255,255,255,0.25) 47% 49%, transparent 50%);
-  mix-blend-mode: screen;
-  animation: heroStatScan 5.2s steps(1, end) infinite;
-}
-.hero-stats-row .stat-box:nth-child(2)::after { animation-delay: -1.3s; }
-.hero-stats-row .stat-box:nth-child(3)::after { animation-delay: -2.6s; }
-.hero-stats-row .stat-box:nth-child(4)::after { animation-delay: -3.9s; }
-@keyframes heroStatGlitch {
-  0%, 84%, 88%, 91%, 100% {
-    transform: translate(0);
-    border-color: rgba(0,255,255,0.55);
-    box-shadow: none;
-  }
-  85% {
-    transform: translateX(2px);
-    border-color: var(--pixel-pink);
-    box-shadow: -4px 0 0 rgba(0,255,255,0.55), 4px 0 0 rgba(255,45,120,0.45);
-  }
-  86% {
-    transform: translateX(-2px);
-    border-color: var(--pixel-cyan);
-    box-shadow: 3px 0 0 rgba(255,45,120,0.55);
-  }
-  87%, 90% {
-    transform: translate(0);
-    border-color: rgba(0,255,255,0.75);
-    box-shadow: none;
-  }
-  89% {
-    transform: translateY(1px);
-    border-color: var(--pixel-green);
-    box-shadow: inset 5px 0 0 rgba(255,45,120,0.22);
-  }
-}
-@keyframes heroStatScan {
-  0%, 84%, 91%, 100% { opacity: 0; transform: translateX(-12%); }
-  85%, 86% { opacity: 0.9; transform: translateX(8%); }
-  87%, 90% { opacity: 0; transform: translateX(0); }
-  89% { opacity: 0.65; transform: translateX(-5%); }
-}
-.hero-stats-row .stat-box-label {
-  font-family: var(--font-vt);
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.05;
-  color: #e9faff;
-  letter-spacing: 0;
-}
-.hero-stats-row .stat-box-val {
-  font-family: var(--font-vt);
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1;
-  animation: none !important;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-stats-row .stat-box,
-  .hero-stats-row .stat-box::after {
-    animation: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  #hero {
-    grid-template-columns: minmax(0, 1fr) minmax(230px, 0.8fr);
-    gap: 14px;
-    align-items: start;
-    padding: 76px 12px 54px;
-  }
-  .hero-left {
-    padding: 28px 0 24px;
-  }
-  .hero-right {
-    padding: 80px 0 24px;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .hero-img-frame,
-  .hero-visual-row {
-    width: 100%;
-    max-width: 300px;
-  }
-  .hero-idle-video {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    aspect-ratio: 1;
-  }
-  .hero-right .start-game-btn {
-    width: 100%;
-    max-width: 300px;
-  }
-}
-
-@media (max-width: 560px) {
-  #hero {
-    grid-template-columns: minmax(0, 1fr) minmax(155px, 0.82fr);
-    gap: 9px;
-    padding-inline: 8px;
-  }
-  .hero-right {
-    padding-top: 86px;
-  }
-  .hero-img-frame::before {
-    top: -34px;
-    width: max-content;
-    max-width: 205px;
-    padding: 5px 7px;
-    font-size: 13px;
-    line-height: 1.05;
-    white-space: normal;
-    text-align: center;
-  }
-  .hero-idle-video,
-  .hero-img-frame,
-  .hero-visual-row,
-  .hero-right .start-game-btn {
-    max-width: 210px;
-  }
-  .hero-right .start-game-btn {
-    min-height: 48px;
-    padding-inline: 10px;
-  }
-  .start-game-quest-hint {
-    max-width: 210px;
-    margin-bottom: -10px;
-    padding: 6px 7px;
-    font-size: 14px;
-    line-height: 1.1;
-  }
-  .hero-stats-row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    margin-top: 20px;
-  }
-  .hero-stats-row .stat-box {
-    padding: 8px 9px;
-  }
-  .hero-stats-row .stat-box-label {
-    margin-bottom: 3px;
-    font-size: 14px;
-  }
-  .hero-stats-row .stat-box-val {
-    font-size: 21px;
-  }
-  .hero-cta-row .exit-game-btn {
-    padding: 10px 14px;
-    font-size: 7px;
-  }
-  .dialogue-text {
-    font-size: 16px;
-  }
-  .about-character-card {
-    padding: 26px 14px 18px;
-  }
-  .about-character-card::before {
-    top: -14px;
-    font-size: 13px;
-  }
-  .about-character-card .char-name-big {
-    font-size: 30px;
-  }
-  .about-character-card .char-class {
-    margin-bottom: 18px;
-    font-size: 15px;
-  }
-  .about-character-card .char-stats {
-    gap: 8px;
-  }
-  .about-character-card .char-stat-row {
-    padding: 9px 8px;
-  }
-  .about-character-card .char-stat-label {
-    font-size: 15px;
-  }
-  .about-character-card .char-stat-label span {
-    min-width: 32px;
-    padding: 1px 4px;
-  }
-  .about-character-card .stat-bar {
-    height: 10px;
-  }
-  .career-roadmap {
-    padding: 18px 13px;
-  }
-  .career-level {
-    padding-left: 42px;
-  }
-  .career-role {
-    font-size: 7px;
-  }
-  .career-company {
-    font-size: 23px;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -3351,18 +2097,6 @@ footer {
   </div>
 </div>
 
-<!-- SLEEP-BETTER TAGLINE BANNER (revealed on first scroll) -->
-<div class="dialogue-box">
-  <div class="hero-dialogue-content">
-    <img
-      src="assets/sleep-better-banner.png"
-      alt="Sleeping rabbit and determined marketing turtle racing toward a finish line"
-      class="sleep-better-banner"
-    >
-    <p class="dialogue-text">Won't let your brands sleep, so we sleep better</p>
-  </div>
-</div>
-
 <!-- HERO -->
 <section id="hero">
   <div class="hero-pixel-bg"></div>
@@ -3374,6 +2108,10 @@ footer {
   <div class="coin-float" style="top:20%;left:48%;--cd:3.5s;--delay:2s">🌟</div>
 
   <div class="hero-left">
+    <div class="dialogue-box">
+      <p class="dialogue-text">I create brands for a living.</p>
+    </div>
+
     <div class="hero-name-block">
       <p class="hero-name-sub">// PLAYER NAME</p>
       <div class="hero-name-row">
@@ -3406,7 +2144,7 @@ footer {
     </div>
 
     <div class="hero-cta-row">
-      <button type="button" class="exit-game-btn" id="exitGameBtn">EXIT GAME</button>
+      <button type="button" class="btn-px btn-px-primary start-game-btn" data-start-brand-game>START GAME</button>
       <a href="https://wa.me/919638940669" target="_blank" class="btn-px btn-px-secondary">CONTACT DEALER</a>
     </div>
   </div>
@@ -3424,8 +2162,7 @@ footer {
         class="hero-img"
         >
       </div>
-      <p class="start-game-quest-hint">WIN EXCLUSIVE DISCOUNTS BY COMPLETING THIS QUEST</p>
-      <button type="button" class="btn-px btn-px-primary start-game-btn" data-start-brand-game>START GAME</button>
+      <button type="button" class="exit-game-btn" id="exitGameBtn">EXIT GAME</button>
     </div>
   </div>
 </section>
@@ -3434,22 +2171,18 @@ footer {
 <div class="ticker-wrap">
   <div class="ticker-track">
     <span class="ticker-item"><span>★</span> SOCIAL MEDIA STRATEGY</span>
-    <span class="ticker-item"><span>★</span> CORPORATE SHOOT</span>
-    <span class="ticker-item"><span>★</span> QUALITY LEAD GENERATION</span>
+    <span class="ticker-item"><span>★</span> BRAND CONTENT</span>
+    <span class="ticker-item"><span>★</span> B2B LEAD GEN</span>
     <span class="ticker-item"><span>★</span> MEME MARKETING</span>
-    <span class="ticker-item"><span>★</span> BRAND CODED WEBSITE DEVELOPMENT</span>
-    <span class="ticker-item"><span>★</span> FULL SEO OPTIMIZATION</span>
-    <span class="ticker-item"><span>★</span> EVENT COVERAGE</span>
-    <span class="ticker-item"><span>★</span> BRAND OUTREACH</span>
+    <span class="ticker-item"><span>★</span> REAL ESTATE ADS</span>
+    <span class="ticker-item"><span>★</span> SEO AUDITS</span>
     <span class="ticker-item"><span>★</span> CAMPAIGN STRATEGY</span>
     <span class="ticker-item"><span>★</span> SOCIAL MEDIA STRATEGY</span>
-    <span class="ticker-item"><span>★</span> CORPORATE SHOOT</span>
-    <span class="ticker-item"><span>★</span> QUALITY LEAD GENERATION</span>
+    <span class="ticker-item"><span>★</span> BRAND CONTENT</span>
+    <span class="ticker-item"><span>★</span> B2B LEAD GEN</span>
     <span class="ticker-item"><span>★</span> MEME MARKETING</span>
-    <span class="ticker-item"><span>★</span> BRAND CODED WEBSITE DEVELOPMENT</span>
-    <span class="ticker-item"><span>★</span> FULL SEO OPTIMIZATION</span>
-    <span class="ticker-item"><span>★</span> EVENT COVERAGE</span>
-    <span class="ticker-item"><span>★</span> BRAND OUTREACH</span>
+    <span class="ticker-item"><span>★</span> REAL ESTATE ADS</span>
+    <span class="ticker-item"><span>★</span> SEO AUDITS</span>
     <span class="ticker-item"><span>★</span> CAMPAIGN STRATEGY</span>
   </div>
 </div>
@@ -3505,49 +2238,24 @@ footer {
       </div>
     </div>
     <div class="about-bio-panel">
-      <div class="career-roadmap">
-        <div class="career-roadmap-head">
-          <div class="career-roadmap-title">CAREER ROADMAP // LEVEL PROGRESSION</div>
-          <div class="career-roadmap-count"><span data-career-progress>0</span>% EXPLORED</div>
-        </div>
-        <div class="career-progress-track" aria-hidden="true">
-          <div class="career-progress-fill"></div>
-        </div>
-        <div class="career-path">
-          <div class="career-level">
-            <div class="career-date">2021 - 2022</div>
-            <div class="career-role">DIGITAL MARKETING FOUNDATION</div>
-            <div class="career-company">DgNext Solution · NeoDocto · White Hat Jr.</div>
-            <div class="career-note">Built early experience across SEO, social campaigns, sales, operations and digital marketing.</div>
-          </div>
-          <div class="career-level">
-            <div class="career-date">JAN 2023 - MAY 2023</div>
-            <div class="career-role">BRAND ASSOCIATE</div>
-            <div class="career-company">Jack in the Box Worldwide</div>
-          </div>
-          <div class="career-level">
-            <div class="career-date">MAR 2024 - OCT 2024</div>
-            <div class="career-role">DIGITAL MARKETING EXECUTIVE</div>
-            <div class="career-company">EquityPandit Financial Services Pvt Ltd</div>
-          </div>
-          <div class="career-level">
-            <div class="career-date">2024</div>
-            <div class="career-role">DIGITAL MARKETING STRATEGIST</div>
-            <div class="career-company">The Mini Agency</div>
-          </div>
-          <div class="career-level">
-            <div class="career-date">JAN 2025 - APR 2026</div>
-            <div class="career-role">DIGITAL MARKETING SPECIALIST</div>
-            <div class="career-company">Lucien Solutions</div>
-            <div class="career-note">Executed strategy, campaigns, content and production across multiple client accounts.</div>
-          </div>
-          <div class="career-level current">
-            <div class="career-date">APR 2026 - PRESENT</div>
-            <div class="career-role">DIGITAL MARKETING MANAGER</div>
-            <div class="career-company">The Mini Agency</div>
-            <div class="career-note">Leading digital strategy and creative media campaigns across Gujarat and Maharashtra.</div>
-          </div>
-        </div>
+      <div class="bio-dialogue">
+        <p class="bio-text">
+          Digital Marketing Manager at <strong>The Mini Agency</strong> — a boutique creative media production agency across Gujarat &amp; Maharashtra.<br><br>
+          Previously worked at <strong>Lucien Solutions</strong>, a boutique digital agency where I executed strategy and production across multiple client accounts.<br><br>
+          My campaigns span entertainment, real estate, fintech, fashion, and NGOs — each one built to actually do something, not just look good.
+        </p>
+      </div>
+      <div class="skills-grid">
+        <span class="skill-chip">SOCIAL MEDIA</span>
+        <span class="skill-chip">CONTENT STRATEGY</span>
+        <span class="skill-chip">B2B OUTREACH</span>
+        <span class="skill-chip">BRAND IDENTITY</span>
+        <span class="skill-chip">SEO AUDITS</span>
+        <span class="skill-chip">MEME MARKETING</span>
+        <span class="skill-chip">META ADS</span>
+        <span class="skill-chip">LEAD GEN</span>
+        <span class="skill-chip">CAMPAIGN DESIGN</span>
+        <span class="skill-chip">SALES NAVIGATOR</span>
       </div>
     </div>
   </div>
@@ -3558,149 +2266,89 @@ footer {
 <section id="work" class="px-section">
   <div class="px-section-header reveal">
     <div class="px-eyebrow">PORTFOLIO ITEMS</div>
-    <h2 class="px-title">FEATURED PROJECTS /<br>SELECTED WORK</h2>
+    <h2 class="px-title">QUEST LOG /<br>SELECTED WORK</h2>
   </div>
-  <div class="project-console reveal">
-    <div class="project-console-top">
-      <span>PORTFOLIO ARCHIVE // SELECT PROJECT</span>
-      <span class="project-console-light" aria-hidden="true"></span>
-      <span class="project-active-label">PLUS BARRELS // READY</span>
-    </div>
-    <div class="project-console-body">
-  <button type="button" class="project-menu-nav prev" aria-label="Previous portfolio item">‹</button>
-  <div class="project-switcher" role="tablist" aria-label="Featured projects">
-    <button type="button" class="project-tab is-active" data-project-tab="plus-barrels" role="tab" aria-selected="true"><span class="project-tab-thumb"><img src="assets/selected-plus-barrels.png" alt="" loading="lazy"></span><span class="project-tab-label">PLUS BARRELS</span></button>
-    <button type="button" class="project-tab" data-project-tab="forest-creators" role="tab" aria-selected="false"><span class="project-tab-thumb"><img src="assets/selected-forest-creators.png" alt="" loading="lazy"></span><span class="project-tab-label">FOREST CREATORS</span></button>
-    <button type="button" class="project-tab" data-project-tab="applause" role="tab" aria-selected="false"><span class="project-tab-thumb project-tab-thumb-poster" data-theme="pink">A+</span><span class="project-tab-label">APPLAUSE</span></button>
-    <button type="button" class="project-tab" data-project-tab="brand-meme" role="tab" aria-selected="false"><span class="project-tab-thumb project-tab-thumb-poster" data-theme="meme">LOL</span><span class="project-tab-label">BRAND MEMES</span></button>
-    <button type="button" class="project-tab" data-project-tab="personal" role="tab" aria-selected="false"><span class="project-tab-thumb project-tab-thumb-poster" data-theme="green">PX</span><span class="project-tab-label">PERSONAL</span></button>
-    <button type="button" class="project-tab" data-project-tab="real-estate" role="tab" aria-selected="false"><span class="project-tab-thumb project-tab-thumb-poster" data-theme="orange">RE</span><span class="project-tab-label">REAL ESTATE</span></button>
-  </div>
-  <button type="button" class="project-menu-nav next" aria-label="Next portfolio item">›</button>
-  <div class="project-panels">
-    <div class="project-panel is-active" data-project-panel="plus-barrels">
-      <div class="project-summary">
-        <div>
-          <div class="project-index">PROJECT 01 / INDUSTRIAL BRAND</div>
-          <h3 class="project-name">PLUS BARRELS</h3>
-        </div>
-        <p class="project-description">Website and video presence for an HDPE drum and carboy manufacturing company in India.</p>
-        <div class="project-tags"><span>WEB DEVELOPMENT</span><span>VIDEO</span><span>B2B BRANDING</span></div>
+  <div class="work-grid reveal">
+    <a href="https://drive.google.com/drive/folders/1C_02ALzS4ci7BQNri8Xk7SuXXH_pTWf3" target="_blank" class="work-card">
+      <div class="work-card-num">QUEST #01</div>
+      <div class="work-icon-px">🎬</div>
+      <div class="work-card-title">APPLAUSE ENTERTAINMENT</div>
+      <p class="work-card-desc">Social media content and creative production for India's leading OTT studio.</p>
+      <div class="work-card-footer">
+        <span class="work-tag-px">ENTERTAINMENT</span>
+        <span class="work-arrow-px">► GO</span>
       </div>
-      <div class="project-media-grid">
-        <a href="https://plusbarrels.com/" target="_blank" rel="noopener" class="project-media-card">
-          <img src="assets/selected-plus-barrels.png" alt="Plus Barrels website preview">
-          <div class="project-media-info"><span class="project-media-title">PLUS BARRELS WEBSITE</span><span class="project-media-action">OPEN SITE</span></div>
-        </a>
-        <a href="https://youtu.be/m51XkyzHO6k" target="_blank" rel="noopener" class="project-media-card">
-          <img src="assets/selected-youtube.png" alt="Plus Barrels YouTube video preview">
-          <div class="project-media-info"><span class="project-media-title">BRAND VIDEO</span><span class="project-media-action">WATCH VIDEO</span></div>
-        </a>
+    </a>
+    <a href="https://drive.google.com/drive/folders/1KjtckNBNTULVCNPgsfWJ1XibE-BWMRhs?usp=sharing" target="_blank" class="work-card">
+      <div class="work-card-num">QUEST #02</div>
+      <div class="work-icon-px">🔬</div>
+      <div class="work-card-title">RESEARCH SAMPLES</div>
+      <p class="work-card-desc">Market research, audience insights, and competitive analysis samples across client verticals.</p>
+      <div class="work-card-footer">
+        <span class="work-tag-px">RESEARCH</span>
+        <span class="work-arrow-px">► GO</span>
       </div>
-    </div>
-    <div class="project-panel" data-project-panel="forest-creators">
-      <div class="project-summary">
-        <div>
-          <div class="project-index">PROJECT 02 / ENVIRONMENTAL BRAND</div>
-          <h3 class="project-name">FOREST CREATORS</h3>
-        </div>
-        <p class="project-description">Social media presence and documentary-led storytelling for environmental consultant Dr R K Nair.</p>
-        <div class="project-tags"><span>SOCIAL MEDIA</span><span>DOCUMENTARY</span><span>CONTENT</span></div>
+    </a>
+    <a href="https://drive.google.com/drive/folders/1jBITkj-DfoQaIi8b37yeZM0Rd9VBRqXE?usp=drive_link" target="_blank" class="work-card">
+      <div class="work-card-num">QUEST #03</div>
+      <div class="work-icon-px">🔥</div>
+      <div class="work-card-title">BRAND MEME MARKETING</div>
+      <p class="work-card-desc">Culturally-wired meme content engineered for virality and brand recall.</p>
+      <div class="work-card-footer">
+        <span class="work-tag-px">MEME / CONTENT</span>
+        <span class="work-arrow-px">► GO</span>
       </div>
-      <div class="project-media-grid">
-        <a href="https://www.instagram.com/rknair1671/" target="_blank" rel="noopener" class="project-media-card">
-          <img src="assets/selected-forest-creators.png" alt="Forest Creators Instagram profile preview">
-          <div class="project-media-info"><span class="project-media-title">INSTAGRAM PRESENCE</span><span class="project-media-action">OPEN PROFILE</span></div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=d6BicVpdmrU" target="_blank" rel="noopener" class="project-media-card">
-          <img src="assets/selected-forest-video.png" alt="Forest Creators documentary video preview">
-          <div class="project-media-info"><span class="project-media-title">THE GREEN HERO OF INDIA</span><span class="project-media-action">WATCH VIDEO</span></div>
-        </a>
+    </a>
+    <a href="https://drive.google.com/drive/folders/1CgJKU2-sue4IwKHbPHR7n2pc70qswvda?usp=drive_link" target="_blank" class="work-card">
+      <div class="work-card-num">QUEST #04</div>
+      <div class="work-icon-px">🏙️</div>
+      <div class="work-card-title">REAL ESTATE AD PROJECTS</div>
+      <p class="work-card-desc">Performance-focused ad campaigns for real estate developers — concept to execution.</p>
+      <div class="work-card-footer">
+        <span class="work-tag-px">REAL ESTATE</span>
+        <span class="work-arrow-px">► GO</span>
       </div>
-    </div>
-    <div class="project-panel" data-project-panel="applause">
-      <div class="project-summary">
-        <div>
-          <div class="project-index">PROJECT 03 / ENTERTAINMENT</div>
-          <h3 class="project-name">APPLAUSE ENTERTAINMENT</h3>
-        </div>
-        <p class="project-description">Social media content and creative production for India's leading OTT studio.</p>
-        <div class="project-tags"><span>ENTERTAINMENT</span><span>SOCIAL MEDIA</span><span>CREATIVE</span></div>
+    </a>
+    <a href="https://drive.google.com/drive/folders/1N7SJXoWwjeyJThFTJBFLlj_VEhsEQ5Io?usp=drive_link" target="_blank" class="work-card">
+      <div class="work-card-num">QUEST #05</div>
+      <div class="work-icon-px">🔍</div>
+      <div class="work-card-title">AUDIT REPORT SAMPLES</div>
+      <p class="work-card-desc">SEO, social, and digital audits — structured, actionable, insight-rich.</p>
+      <div class="work-card-footer">
+        <span class="work-tag-px">AUDITS</span>
+        <span class="work-arrow-px">► GO</span>
       </div>
-      <div class="project-media-grid">
-        <a href="https://drive.google.com/drive/folders/1C_02ALzS4ci7BQNri8Xk7SuXXH_pTWf3" target="_blank" rel="noopener" class="project-media-card">
-          <div class="project-poster" data-theme="pink">
-            <span class="project-poster-symbol">A+</span>
-            <span class="project-poster-name">APPLAUSE ENTERTAINMENT</span>
-          </div>
-          <div class="project-media-info"><span class="project-media-title">SOCIAL & CREATIVE WORK</span><span class="project-media-action">OPEN PROJECT</span></div>
-        </a>
+    </a>
+    <a href="https://plusbarrels.com/" target="_blank" class="work-card">
+      <div class="work-card-num">QUEST #06</div>
+      <div class="work-icon-px">🌐</div>
+      <div class="work-card-title">WEBSITE DEVELOPMENT</div>
+      <p class="work-card-desc">Full website built and deployed for Plus Barrels — HDPE industrial packaging brand, Mumbai.</p>
+      <div class="work-card-footer">
+        <span class="work-tag-px">WEB DEV</span>
+        <span class="work-arrow-px">► GO</span>
       </div>
-    </div>
-    <div class="project-panel" data-project-panel="brand-meme">
-      <div class="project-summary">
-        <div>
-          <div class="project-index">PROJECT 04 / CULTURE MARKETING</div>
-          <h3 class="project-name">BRAND MEME MARKETING</h3>
-        </div>
-        <p class="project-description">Culturally wired meme content engineered for virality, engagement, and brand recall.</p>
-        <div class="project-tags"><span>MEMES</span><span>CONTENT</span><span>BRAND RECALL</span></div>
+    </a>
+    <a href="https://drive.google.com/drive/folders/1bb3-fP4j2PJCw5OLiknlofuASNjbSZF5?usp=sharing" target="_blank" class="work-card">
+      <div class="work-card-num">QUEST #07</div>
+      <div class="work-icon-px">✨</div>
+      <div class="work-card-title">PERSONAL CREATIONS</div>
+      <p class="work-card-desc">Personal explorations in design and creative expression — no brief required.</p>
+      <div class="work-card-footer">
+        <span class="work-tag-px">PERSONAL</span>
+        <span class="work-arrow-px">► GO</span>
       </div>
-      <div class="project-media-grid">
-        <a href="https://drive.google.com/drive/folders/1jBITkj-DfoQaIi8b37yeZM0Rd9VBRqXE?usp=drive_link" target="_blank" rel="noopener" class="project-media-card">
-          <div class="project-poster" data-theme="meme">
-            <span class="project-poster-symbol">LOL</span>
-            <span class="project-poster-name">BRAND MEME MARKETING</span>
-          </div>
-          <div class="project-media-info"><span class="project-media-title">MEME CAMPAIGNS</span><span class="project-media-action">OPEN PROJECT</span></div>
-        </a>
+    </a>
+    <a href="https://drive.google.com/file/d/1DEej9kvVEY9bc6khpn876OiveJgi7zZR/view?usp=sharing" target="_blank" class="work-card">
+      <div class="work-card-num">QUEST #09</div>
+      <div class="work-icon-px">📄</div>
+      <div class="work-card-title">FULL RÉSUMÉ / CV</div>
+      <p class="work-card-desc">Complete experience, roles, and responsibilities across my full career.</p>
+      <div class="work-card-footer">
+        <span class="work-tag-px">CV</span>
+        <span class="work-arrow-px">► GO</span>
       </div>
-    </div>
-    <div class="project-panel" data-project-panel="personal">
-      <div class="project-summary">
-        <div>
-          <div class="project-index">PROJECT 05 / CREATIVE LAB</div>
-          <h3 class="project-name">PERSONAL CREATIONS</h3>
-        </div>
-        <p class="project-description">Personal explorations in design and creative expression, made without a client brief.</p>
-        <div class="project-tags"><span>DESIGN</span><span>EXPERIMENTS</span><span>PERSONAL</span></div>
-      </div>
-      <div class="project-media-grid">
-        <a href="https://drive.google.com/drive/folders/1bb3-fP4j2PJCw5OLiknlofuASNjbSZF5?usp=sharing" target="_blank" rel="noopener" class="project-media-card">
-          <div class="project-poster" data-theme="green">
-            <span class="project-poster-symbol">PX</span>
-            <span class="project-poster-name">PERSONAL CREATIONS</span>
-          </div>
-          <div class="project-media-info"><span class="project-media-title">CREATIVE COLLECTION</span><span class="project-media-action">OPEN PROJECT</span></div>
-        </a>
-      </div>
-    </div>
-    <div class="project-panel" data-project-panel="real-estate">
-      <div class="project-summary">
-        <div>
-          <div class="project-index">PROJECT 06 / PERFORMANCE ADS</div>
-          <h3 class="project-name">REAL ESTATE PROJECTS</h3>
-        </div>
-        <p class="project-description">Performance-focused advertising campaigns for real estate developers, from concept to execution.</p>
-        <div class="project-tags"><span>REAL ESTATE</span><span>PAID ADS</span><span>LEAD GENERATION</span></div>
-      </div>
-      <div class="project-media-grid">
-        <a href="https://drive.google.com/drive/folders/1CgJKU2-sue4IwKHbPHR7n2pc70qswvda?usp=drive_link" target="_blank" rel="noopener" class="project-media-card">
-          <div class="project-poster" data-theme="orange">
-            <span class="project-poster-symbol">RE</span>
-            <span class="project-poster-name">REAL ESTATE AD PROJECTS</span>
-          </div>
-          <div class="project-media-info"><span class="project-media-title">AD CAMPAIGNS</span><span class="project-media-action">OPEN PROJECT</span></div>
-        </a>
-      </div>
-    </div>
-  </div>
-    </div>
-    <div class="project-console-loader" aria-hidden="true">
-      <span class="project-loader-label">LOADING SELECTED CAMPAIGN</span>
-      <span class="project-loading-track"><span class="project-loading-fill"></span></span>
-      <span>100%</span>
-    </div>
+    </a>
   </div>
 </section>
 <div class="px-divider"></div>
@@ -3719,24 +2367,39 @@ footer {
         A quick snapshot of brand work across content, performance, outreach, research, and client servicing.
       </p>
     </div>
-    <div class="stats-slider-window">
-    <div class="stats-assets-grid" data-auto-slider>
+    <div class="stats-assets-grid">
       <div class="stats-asset-card">
         <div class="stats-asset-media"><img src="assets/stats-original-01.png" alt="Original campaign stats screenshot 1"></div>
+        <div class="stats-asset-label">ORIGINAL STATS SCREENSHOT 01</div>
       </div>
       <div class="stats-asset-card">
         <div class="stats-asset-media"><img src="assets/stats-original-02.png" alt="Original campaign stats screenshot 2"></div>
+        <div class="stats-asset-label">ORIGINAL STATS SCREENSHOT 02</div>
+      </div>
+      <div class="stats-asset-card">
+        <div class="stats-asset-media"><img src="assets/stats-original-03.png" alt="Original campaign stats screenshot 3"></div>
+        <div class="stats-asset-label">ORIGINAL STATS SCREENSHOT 03</div>
+      </div>
+      <div class="stats-asset-card">
+        <div class="stats-asset-media"><img src="assets/stats-original-04.png" alt="Original campaign stats screenshot 4"></div>
+        <div class="stats-asset-label">ORIGINAL STATS SCREENSHOT 04</div>
+      </div>
+      <div class="stats-asset-card">
+        <div class="stats-asset-media"><img src="assets/stats-original-05.png" alt="Original campaign stats screenshot 5"></div>
+        <div class="stats-asset-label">ORIGINAL STATS SCREENSHOT 05</div>
       </div>
       <div class="stats-asset-card">
         <div class="stats-asset-media"><img src="assets/stats-original-06.png" alt="Original campaign stats screenshot 6"></div>
+        <div class="stats-asset-label">ORIGINAL STATS SCREENSHOT 06</div>
       </div>
       <div class="stats-asset-card">
         <div class="stats-asset-media"><img src="assets/stats-original-07.png" alt="Original campaign stats screenshot 7"></div>
+        <div class="stats-asset-label">ORIGINAL STATS SCREENSHOT 07</div>
       </div>
       <div class="stats-asset-card">
         <div class="stats-asset-media"><img src="assets/stats-original-08.png" alt="Original campaign stats screenshot 8"></div>
+        <div class="stats-asset-label">ORIGINAL STATS SCREENSHOT 08</div>
       </div>
-    </div>
     </div>
   </div>
   <div class="expertise-table reveal">
@@ -4038,8 +2701,7 @@ footer {
     <div class="px-eyebrow">POWER UPS</div>
     <h2 class="px-title">CERTIFICATIONS</h2>
   </div>
-  <div class="cert-slider-window reveal">
-  <div class="cert-grid-px" data-auto-slider>
+  <div class="cert-grid-px reveal">
     <div class="cert-card-px">
       <div class="cert-image-px has-image"><img src="assets/cert-be10x-ai-tools.svg" alt="be10x AI Tools Workshop Certificate"></div>
       <div class="cert-name-px">AI TOOLS WORKSHOP</div>
@@ -4071,7 +2733,6 @@ footer {
       <div class="cert-meta-px">GOOGLE DIGITAL UNLOCKED</div>
     </div>
   </div>
-  </div>
 </section>
 <div class="px-divider"></div>
 
@@ -4081,88 +2742,79 @@ footer {
     <div class="px-eyebrow">ONLINE PRESENCE</div>
     <h2 class="px-title">SOCIAL HANDLES</h2>
   </div>
-  <div class="social-shell-px reveal">
-  <div class="social-toolbar-px" aria-label="Social handle filters">
-    <div class="social-tabs-px">
-      <button class="social-tab-px is-active" type="button" data-social-filter="all">ALL HANDLES</button>
-      <button class="social-tab-px" type="button" data-social-filter="instagram">INSTAGRAM</button>
-      <button class="social-tab-px" type="button" data-social-filter="linkedin">LINKEDIN</button>
-    </div>
-  </div>
   <div class="social-grid-px reveal">
-    <a href="https://instagram.com/applausesocial?igshid=MzRlODBiNWFlZA==" target="_blank" class="social-card-px" data-social-type="instagram">
+    <a href="https://instagram.com/applausesocial?igshid=MzRlODBiNWFlZA==" target="_blank" class="social-card-px">
       <div class="social-platform-px">📸 INSTAGRAM</div>
       <div class="social-handle-px">@APPLAUSE<br>SOCIAL</div>
       <p class="social-desc-px">Official social for Applause Entertainment — content and community.</p>
       <span class="social-follow-btn">► VISIT HANDLE</span>
     </a>
-    <a href="https://www.instagram.com/unicornsignals/?hl=en" target="_blank" class="social-card-px" data-social-type="instagram">
+    <a href="https://www.instagram.com/unicornsignals/?hl=en" target="_blank" class="social-card-px">
       <div class="social-platform-px">📸 INSTAGRAM</div>
       <div class="social-handle-px">@UNICORN<br>SIGNALS</div>
       <p class="social-desc-px">Fintech brand — stock signals, trading community and educational content.</p>
       <span class="social-follow-btn">► VISIT HANDLE</span>
     </a>
-    <a href="https://instagram.com/abstractb?igshid=MzRlODBiNWFlZA==" target="_blank" class="social-card-px" data-social-type="instagram">
+    <a href="https://instagram.com/abstractb?igshid=MzRlODBiNWFlZA==" target="_blank" class="social-card-px">
       <div class="social-platform-px">📸 INSTAGRAM</div>
       <div class="social-handle-px">@ABSTRACT<br>MEN</div>
       <p class="social-desc-px">Lifestyle and fashion brand with a distinct creative edge.</p>
       <span class="social-follow-btn">► VISIT HANDLE</span>
     </a>
-    <a href="https://www.instagram.com/rknair1671/" target="_blank" class="social-card-px" data-social-type="instagram">
+    <a href="https://www.instagram.com/rknair1671/" target="_blank" class="social-card-px">
       <div class="social-platform-px">📸 INSTAGRAM</div>
       <div class="social-handle-px">@RKNAIR1671<br><span style="font-size:8px;color:var(--pixel-gray)">FOREST CREATORS</span></div>
       <p class="social-desc-px">Environmental NGO — CSR and sustainability content managed by Naveen.</p>
       <span class="social-follow-btn">► VISIT HANDLE</span>
     </a>
-    <a href="https://www.instagram.com/lulu_andaman/" target="_blank" class="social-card-px" data-social-type="instagram">
+    <a href="https://www.instagram.com/lulu_andaman/" target="_blank" class="social-card-px">
       <div class="social-platform-px">📸 INSTAGRAM</div>
       <div class="social-handle-px">@LULU_<br>ANDAMAN</div>
       <p class="social-desc-px">Electronics retail brand in Port Blair — seasonal campaigns and social presence.</p>
       <span class="social-follow-btn">► VISIT HANDLE</span>
     </a>
-    <a href="https://www.linkedin.com/in/hemin-patel-aab05930/" target="_blank" class="social-card-px" data-social-type="linkedin">
+    <a href="https://www.linkedin.com/in/hemin-patel-aab05930/" target="_blank" class="social-card-px">
       <div class="social-platform-px">💼 LINKEDIN</div>
       <div class="social-handle-px">HEMIN PATEL<br><span style="font-size:8px;color:var(--pixel-gray)">SPSM PHARMA — CEO</span></div>
       <p class="social-desc-px">Key stakeholder managed during B2B outreach campaigns in the pharma sector.</p>
       <span class="social-follow-btn">► VIEW PROFILE</span>
     </a>
-    <a href="https://www.linkedin.com/in/anup-bhasin-0954144/" target="_blank" class="social-card-px" data-social-type="linkedin">
+    <a href="https://www.linkedin.com/in/anup-bhasin-0954144/" target="_blank" class="social-card-px">
       <div class="social-platform-px">💼 LINKEDIN</div>
       <div class="social-handle-px">ANUP BHASIN<br><span style="font-size:8px;color:var(--pixel-gray)">INDISEC — CEO</span></div>
       <p class="social-desc-px">Client lead for IndiSec — SEO, LinkedIn and content engagement strategy.</p>
       <span class="social-follow-btn">► VIEW PROFILE</span>
     </a>
-    <a href="https://www.linkedin.com/in/casreekarreddy/" target="_blank" class="social-card-px" data-social-type="linkedin">
+    <a href="https://www.linkedin.com/in/casreekarreddy/" target="_blank" class="social-card-px">
       <div class="social-platform-px">💼 LINKEDIN</div>
       <div class="social-handle-px">SREEKAR REDDY<br><span style="font-size:8px;color:var(--pixel-gray)">LORVET — FOUNDER</span></div>
       <p class="social-desc-px">Founder at Lorvet — capital fundraising, IPO, and strategic growth advisory campaigns.</p>
       <span class="social-follow-btn">► VIEW PROFILE</span>
     </a>
-    <a href="https://www.linkedin.com/in/ca-nag-munagapati-97503614/" target="_blank" class="social-card-px" data-social-type="linkedin">
+    <a href="https://www.linkedin.com/in/ca-nag-munagapati-97503614/" target="_blank" class="social-card-px">
       <div class="social-platform-px">💼 LINKEDIN</div>
       <div class="social-handle-px">NAG MUNAGAPATI<br><span style="font-size:8px;color:var(--pixel-gray)">LORVET — CO FOUNDER</span></div>
       <p class="social-desc-px">Co-Founder at Lorvet — capital fundraising, IPO, and strategic growth advisory positioning.</p>
       <span class="social-follow-btn">► VIEW PROFILE</span>
     </a>
-    <a href="https://www.linkedin.com/in/sanjeev-jain-b7636314/" target="_blank" class="social-card-px" data-social-type="linkedin">
+    <a href="https://www.linkedin.com/in/sanjeev-jain-b7636314/" target="_blank" class="social-card-px">
       <div class="social-platform-px">💼 LINKEDIN</div>
       <div class="social-handle-px">SANJEEV JAIN<br><span style="font-size:8px;color:var(--pixel-gray)">AMICUS — MD</span></div>
       <p class="social-desc-px">Managing Director at Amicus — B2B lead generation and outreach strategy.</p>
       <span class="social-follow-btn">► VIEW PROFILE</span>
     </a>
-    <a href="https://www.linkedin.com/in/ekta-asrani-47a86018/" target="_blank" class="social-card-px" data-social-type="linkedin">
+    <a href="https://www.linkedin.com/in/ekta-asrani-47a86018/" target="_blank" class="social-card-px">
       <div class="social-platform-px">💼 LINKEDIN</div>
       <div class="social-handle-px">EKTA ASRANI<br><span style="font-size:8px;color:var(--pixel-gray)">EKARTH LEGAL — FOUNDER</span></div>
       <p class="social-desc-px">Founder at Ekarth Legal — digital presence and LinkedIn outreach managed.</p>
       <span class="social-follow-btn">► VIEW PROFILE</span>
     </a>
-    <a href="https://www.linkedin.com/in/ca-akshay-madaan/" target="_blank" class="social-card-px" data-social-type="linkedin">
+    <a href="https://www.linkedin.com/in/ca-akshay-madaan/" target="_blank" class="social-card-px">
       <div class="social-platform-px">💼 LINKEDIN</div>
       <div class="social-handle-px">AKSHAY MADAAN<br><span style="font-size:8px;color:var(--pixel-gray)">5 CURVES — FOUNDER</span></div>
       <p class="social-desc-px">Founder at 5 Curves — CFO and financial advisory positioning, outreach and content strategy.</p>
       <span class="social-follow-btn">► VIEW PROFILE</span>
     </a>
-  </div>
   </div>
 </section>
 <div class="px-divider"></div>
@@ -4238,24 +2890,6 @@ footer {
 </div>
 
 <script>
-// "WON'T LET YOUR BRANDS SLEEP" BANNER — unfolds on the first scroll down, then stays.
-const dialogueBanner = document.querySelector('.dialogue-box');
-if (dialogueBanner) {
-  let bannerRevealed = false;
-  const revealDialogueBanner = () => {
-    if (bannerRevealed) return;
-    bannerRevealed = true;
-    dialogueBanner.classList.add('is-visible');
-    window.removeEventListener('scroll', onBannerScroll);
-  };
-  const onBannerScroll = () => {
-    if (window.scrollY > 40) revealDialogueBanner();
-  };
-  window.addEventListener('scroll', onBannerScroll, { passive: true });
-  // Fallback: if the page loads already scrolled (refresh mid-page / anchor link), reveal immediately.
-  if (window.scrollY > 40) revealDialogueBanner();
-}
-
 // CUSTOM CURSOR
 const sword = document.getElementById('cursorSword');
 document.addEventListener('mousemove', e => {
@@ -4266,178 +2900,10 @@ document.addEventListener('mousedown', () => sword.classList.add('clicking'));
 document.addEventListener('mouseup', () => sword.classList.remove('clicking'));
 
 // HOVER: spin cursor on clickables
-document.querySelectorAll('a, button, .client-px, .skill-chip').forEach(el => {
+document.querySelectorAll('a, button, .work-card, .client-px, .skill-chip').forEach(el => {
   el.addEventListener('mouseenter', () => { sword.style.filter = 'drop-shadow(0 0 8px #ffe600) brightness(1.4)'; });
   el.addEventListener('mouseleave', () => { sword.style.filter = ''; });
 });
-
-// CAREER ROADMAP: unlock levels and fill progress as the section is explored.
-const careerRoadmap = document.querySelector('.career-roadmap');
-const careerLevels = [...document.querySelectorAll('.career-level')];
-const careerProgressLabel = document.querySelector('[data-career-progress]');
-if (careerRoadmap && careerLevels.length) {
-  const levelObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('unlocked');
-    });
-  }, { threshold: 0.42 });
-  careerLevels.forEach(level => levelObserver.observe(level));
-
-  const updateCareerProgress = () => {
-    const rect = careerRoadmap.getBoundingClientRect();
-    const viewportMarker = window.innerHeight * 0.7;
-    const traveled = viewportMarker - rect.top;
-    const range = Math.max(1, rect.height + window.innerHeight * 0.25);
-    const progress = Math.max(0, Math.min(100, Math.round((traveled / range) * 100)));
-    careerRoadmap.style.setProperty('--career-progress', `${progress}%`);
-    if (careerProgressLabel) careerProgressLabel.textContent = String(progress);
-  };
-  updateCareerProgress();
-  window.addEventListener('scroll', updateCareerProgress, { passive: true });
-  window.addEventListener('resize', updateCareerProgress);
-}
-
-// FEATURED PROJECT TABS
-// Replace the Player 1 portrait with the supplied idle animation.
-const heroPortrait = document.querySelector('.hero-img');
-if (heroPortrait) {
-  const heroIdleVideo = document.createElement('video');
-  heroIdleVideo.className = 'hero-idle-video';
-  heroIdleVideo.autoplay = true;
-  heroIdleVideo.muted = true;
-  heroIdleVideo.loop = true;
-  heroIdleVideo.playsInline = true;
-  heroIdleVideo.preload = 'metadata';
-  heroIdleVideo.setAttribute('aria-label', 'Retro gaming character idle animation');
-  const source = document.createElement('source');
-  source.src = 'assets/retro-character-idle.mp4';
-  source.type = 'video/mp4';
-  heroIdleVideo.appendChild(source);
-  heroPortrait.replaceWith(heroIdleVideo);
-}
-
-const projectTabs = document.querySelectorAll('[data-project-tab]');
-const projectPanels = document.querySelectorAll('[data-project-panel]');
-const projectConsole = document.querySelector('.project-console');
-const projectPanelShell = document.querySelector('.project-panels');
-const projectActiveLabel = document.querySelector('.project-active-label');
-const projectFallbackTints = {
-  applause: 'linear-gradient(135deg, rgba(124,30,70,.45), rgba(5,4,3,.2))',
-  'brand-meme': 'linear-gradient(135deg, rgba(27,102,132,.42), rgba(5,4,3,.2))',
-  personal: 'linear-gradient(135deg, rgba(44,104,62,.42), rgba(5,4,3,.2))',
-  'real-estate': 'linear-gradient(135deg, rgba(142,86,24,.44), rgba(5,4,3,.2))'
-};
-
-const updateProjectBackdrop = selectedProject => {
-  if (!projectPanelShell) return;
-  const panel = [...projectPanels].find(item => item.dataset.projectPanel === selectedProject);
-  const previewImage = panel?.querySelector('.project-media-card img');
-  const previewSource = previewImage?.getAttribute('src');
-  const backdrop = previewSource
-    ? `url("${previewSource}")`
-    : projectFallbackTints[selectedProject] || 'none';
-  projectPanelShell.style.setProperty('--project-preview', backdrop);
-};
-
-projectTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const selectedProject = tab.dataset.projectTab;
-    const tabs = [...projectTabs];
-    const selectedIndex = tabs.indexOf(tab);
-    projectTabs.forEach(button => {
-      const active = button === tab;
-      button.classList.toggle('is-active', active);
-      button.setAttribute('aria-selected', String(active));
-    });
-    projectPanels.forEach(panel => {
-      panel.classList.toggle('is-active', panel.dataset.projectPanel === selectedProject);
-    });
-    if (projectActiveLabel) {
-      const position = String(selectedIndex + 1).padStart(2, '0');
-      const label = tab.querySelector('.project-tab-label')?.textContent.trim() || tab.textContent.trim();
-      projectActiveLabel.textContent = `${position}/${String(tabs.length).padStart(2, '0')} · ${label} // READY`;
-    }
-    tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    updateProjectBackdrop(selectedProject);
-    if (projectConsole) {
-      projectConsole.classList.remove('is-loading');
-      void projectConsole.offsetWidth;
-      projectConsole.classList.add('is-loading');
-    }
-  });
-  tab.addEventListener('keydown', event => {
-    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
-    event.preventDefault();
-    const tabs = [...projectTabs];
-    const direction = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1;
-    const nextTab = tabs[(tabs.indexOf(tab) + direction + tabs.length) % tabs.length];
-    nextTab.focus();
-    nextTab.click();
-  });
-});
-updateProjectBackdrop(document.querySelector('[data-project-tab].is-active')?.dataset.projectTab);
-{
-  const initialActiveTab = document.querySelector('[data-project-tab].is-active');
-  if (initialActiveTab && projectActiveLabel) {
-    const tabs = [...projectTabs];
-    const position = String(tabs.indexOf(initialActiveTab) + 1).padStart(2, '0');
-    const label = initialActiveTab.querySelector('.project-tab-label')?.textContent.trim() || initialActiveTab.textContent.trim();
-    projectActiveLabel.textContent = `${position}/${String(tabs.length).padStart(2, '0')} · ${label} // READY`;
-  }
-}
-document.querySelectorAll('.project-menu-nav').forEach(button => {
-  button.addEventListener('click', () => {
-    const tabs = [...projectTabs];
-    const activeIndex = tabs.findIndex(tab => tab.classList.contains('is-active'));
-    const direction = button.classList.contains('next') ? 1 : -1;
-    tabs[(activeIndex + direction + tabs.length) % tabs.length]?.click();
-  });
-});
-
-// Swipe left/right on the project preview to move between portfolio items (touch devices).
-if (projectPanelShell) {
-  let swipeStartX = null;
-  let swipeStartY = null;
-  projectPanelShell.addEventListener('touchstart', event => {
-    if (event.touches.length !== 1) return;
-    swipeStartX = event.touches[0].clientX;
-    swipeStartY = event.touches[0].clientY;
-  }, { passive: true });
-  projectPanelShell.addEventListener('touchend', event => {
-    if (swipeStartX === null) return;
-    const touch = event.changedTouches[0];
-    const deltaX = touch.clientX - swipeStartX;
-    const deltaY = touch.clientY - swipeStartY;
-    swipeStartX = null;
-    swipeStartY = null;
-    // Ignore mostly-vertical swipes (scrolling) and swipes that started on a horizontally scrollable media grid.
-    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY) * 1.5) return;
-    const activePanel = [...projectPanels].find(panel => panel.classList.contains('is-active'));
-    const mediaGrid = activePanel?.querySelector('.project-media-grid');
-    if (mediaGrid && mediaGrid.scrollWidth > mediaGrid.clientWidth + 4) return;
-    const direction = deltaX < 0 ? 'next' : 'prev';
-    document.querySelector(`.project-menu-nav.${direction}`)?.click();
-  }, { passive: true });
-}
-
-
-const aboutCharacterCard = document.querySelector('.about-character-card');
-if (aboutCharacterCard) {
-  const statFills = [...aboutCharacterCard.querySelectorAll('.stat-bar-fill')];
-  statFills.forEach((fill, index) => {
-    fill.style.setProperty('--stat-target', fill.style.width || '0%');
-    fill.closest('.char-stat-row')?.style.setProperty('--stat-index', index);
-  });
-  const statsObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-scanning');
-      window.setTimeout(() => entry.target.classList.add('stats-loaded'), 220);
-      statsObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.32 });
-  statsObserver.observe(aboutCharacterCard);
-}
 
 // EXIT GAME POPUP
 const exitGameBtn = document.getElementById('exitGameBtn');
@@ -4814,101 +3280,6 @@ if (clientsTrack) {
     clientsTrack.appendChild(clone);
   });
 }
-
-// CENTER FOCUS IMAGE SLIDERS
-document.querySelectorAll('[data-auto-slider]').forEach(track => {
-  if (track.dataset.sliderReady === 'true') return;
-  const viewport = track.parentElement;
-  if (!viewport) return;
-
-  const originals = [...track.children];
-  originals.forEach(card => {
-    const clone = card.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    clone.querySelectorAll('a, button, input, textarea, select').forEach(el => {
-      el.setAttribute('tabindex', '-1');
-    });
-    track.appendChild(clone);
-  });
-
-  const isStatsSlider = track.classList.contains('stats-assets-grid');
-  const firstClone = track.children[originals.length];
-  const baseSpeed = isStatsSlider ? 0.72 : 0.62;
-  let offset = 0;
-  let lastTime = 0;
-
-  const updateFocus = () => {
-    const viewportRect = viewport.getBoundingClientRect();
-    const centerX = viewportRect.left + viewportRect.width / 2;
-    let closest = null;
-    let closestDistance = Infinity;
-
-    [...track.children].forEach(card => {
-      if (isStatsSlider) {
-        card.style.transform = 'none';
-        card.style.opacity = '1';
-        card.style.zIndex = '1';
-        card.style.filter = 'none';
-        return;
-      }
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.left + rect.width / 2;
-      const distance = Math.abs(centerX - cardCenter);
-      const ratio = Math.min(1, distance / (viewportRect.width * 0.58));
-      const scale = 1.08 - ratio * 0.18;
-      const opacity = 1 - ratio * 0.34;
-
-      card.style.transform = `scale(${scale.toFixed(3)})`;
-      card.style.opacity = opacity.toFixed(3);
-      card.style.zIndex = String(Math.round((1 - ratio) * 10));
-      card.style.filter = `saturate(${(1.08 - ratio * 0.16).toFixed(2)}) brightness(${(1.06 - ratio * 0.08).toFixed(2)})`;
-
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closest = card;
-      }
-    });
-
-    track.querySelectorAll('.is-focus').forEach(card => card.classList.remove('is-focus'));
-    if (!isStatsSlider) closest?.classList.add('is-focus');
-  };
-
-  const tick = timestamp => {
-    const delta = lastTime ? Math.min(34, timestamp - lastTime) : 16.67;
-    lastTime = timestamp;
-    const loopPoint = firstClone
-      ? firstClone.offsetLeft - originals[0].offsetLeft
-      : track.scrollWidth / 2;
-
-    if (loopPoint > 0) {
-      offset += baseSpeed * (delta / 16.67);
-      if (offset >= loopPoint) offset -= loopPoint;
-      track.style.transform = `translate3d(${-offset.toFixed(2)}px, 0, 0)`;
-    }
-
-    updateFocus();
-    requestAnimationFrame(tick);
-  };
-
-  track.dataset.sliderReady = 'true';
-  requestAnimationFrame(tick);
-});
-
-// SOCIAL HANDLE FILTERS
-const socialTabs = document.querySelectorAll('[data-social-filter]');
-const socialGrid = document.querySelector('.social-grid-px');
-const socialCards = document.querySelectorAll('.social-card-px[data-social-type]');
-socialTabs.forEach(tabButton => {
-  tabButton.addEventListener('click', () => {
-    const filter = tabButton.dataset.socialFilter || 'all';
-    socialTabs.forEach(button => button.classList.toggle('is-active', button === tabButton));
-    socialCards.forEach(card => {
-      const shouldShow = filter === 'all' || card.dataset.socialType === filter;
-      card.classList.toggle('is-hidden', !shouldShow);
-    });
-    socialGrid?.scrollTo({ left: 0, behavior: 'smooth' });
-  });
-});
 
 // STARS
 const starsEl = document.getElementById('starsContainer');
