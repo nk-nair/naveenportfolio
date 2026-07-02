@@ -300,12 +300,25 @@ body::after {
   border-bottom-width: 4px;
   box-shadow: 0 4px 0 rgba(255,230,0,0.55), 0 0 34px rgba(255,180,40,0.18);
 }
+/* Mobile: banner sits BELOW the hero content (under the Start Game button), left-aligned. */
+@media (max-width: 900px) {
+  .dialogue-box {
+    grid-row: 3;
+  }
+  .hero-dialogue-content {
+    align-items: flex-start;
+    padding: 18px 12px;
+  }
+}
 @media (min-width: 1400px) {
+  #hero {
+    grid-template-columns: 1.12fr 0.88fr;
+  }
   .dialogue-box {
     position: absolute;
-    top: 50%;
+    top: 148px;
     left: 47%;
-    transform: translate(-50%, -50%) scale(0.9);
+    transform: translate(-50%, 0) scale(0.9);
     width: clamp(320px, 26vw, 520px);
     max-height: none;
     overflow: visible;
@@ -321,7 +334,7 @@ body::after {
     box-shadow: none;
     opacity: 1;
     pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, 0) scale(1);
   }
   .dialogue-box .hero-dialogue-content {
     padding: 0;
@@ -3336,6 +3349,48 @@ footer {
   }
 }
 
+/* ============================================================
+   FINAL MOBILE HERO ORDER FIX (authoritative — must stay last)
+   The hero section previously had several overlapping
+   @media (max-width: 900px) blocks that kept re-declaring
+   #hero as a 2-column grid, so on mobile hero-left and
+   hero-right were squeezed side-by-side instead of stacking.
+   This block forces true single-column stacking and puts the
+   pieces in the order: player name -> portrait/Start Game ->
+   stats grid -> Exit Game/Disturb Me buttons -> Main Quest banner.
+   ============================================================ */
+@media (max-width: 900px) {
+  #hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+  }
+  .hero-left {
+    display: contents;
+  }
+  .hero-name-block {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .hero-right {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .hero-stats-row {
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: 20px;
+    padding-inline: 16px;
+  }
+  .hero-cta-row {
+    grid-column: 1;
+    grid-row: 5;
+    padding-inline: 16px;
+  }
+  .dialogue-box {
+    grid-row: 6;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3461,7 +3516,7 @@ footer {
 
     <div class="hero-cta-row">
       <button type="button" class="exit-game-btn" id="exitGameBtn">EXIT GAME</button>
-      <a href="https://wa.me/919638940669" target="_blank" class="btn-px btn-px-secondary">CONTACT DEALER</a>
+      <a href="https://wa.me/919638940669" target="_blank" class="btn-px btn-px-secondary">DISTURB ME</a>
     </div>
   </div>
 
