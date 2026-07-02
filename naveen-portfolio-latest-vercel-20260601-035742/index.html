@@ -277,15 +277,18 @@ body::after {
   display: flex; flex-direction: column;
   justify-content: flex-start;
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 2;
   padding: 40px 32px 60px 40px;
   position: relative; z-index: 2;
 }
-/* MAIN QUEST banner: full-width strip between the video and the hero.
-   Starts collapsed; expands open after the first scroll. */
+/* MAIN QUEST banner. Strip form (≤1399px): full-width row at the top of the hero,
+   collapsed until first scroll. Overlay form (≥1280px): floats centered in the
+   hero's empty middle space between the name column and the character art. */
 .dialogue-box {
   position: relative;
   z-index: 40;
+  grid-column: 1 / -1;
+  grid-row: 1;
   max-height: 0;
   overflow: hidden;
   background: #0a0704;
@@ -296,6 +299,46 @@ body::after {
   max-height: 920px;
   border-bottom-width: 4px;
   box-shadow: 0 4px 0 rgba(255,230,0,0.55), 0 0 34px rgba(255,180,40,0.18);
+}
+@media (min-width: 1400px) {
+  .dialogue-box {
+    position: absolute;
+    top: 50%;
+    left: 47%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: clamp(320px, 26vw, 520px);
+    max-height: none;
+    overflow: visible;
+    background: transparent;
+    border-bottom: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .dialogue-box.is-visible {
+    max-height: none;
+    border-bottom-width: 0;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .dialogue-box .hero-dialogue-content {
+    padding: 0;
+    gap: 12px;
+  }
+  .dialogue-box .welcome-marquee {
+    gap: 10px;
+    padding: 8px 14px;
+    max-width: 100%;
+  }
+  .dialogue-box .welcome-word {
+    font-size: clamp(20px, 1.9vw, 30px);
+  }
+  .dialogue-box .welcome-ornament {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+  }
 }
 .hero-dialogue-content {
   display: flex;
@@ -520,7 +563,7 @@ body::after {
 .hero-right {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   grid-column: 2;
-  grid-row: 1;
+  grid-row: 2;
   gap: 28px;
   position: relative; z-index: 2;
   padding: 92px 40px 40px 20px;
@@ -3358,22 +3401,6 @@ footer {
   </div>
 </div>
 
-<!-- MAIN QUEST BANNER (revealed on first scroll) -->
-<div class="dialogue-box">
-  <div class="hero-dialogue-content">
-    <div class="welcome-marquee" aria-label="Welcome">
-      <span class="welcome-ornament" aria-hidden="true">✦ ❋ ✦</span>
-      <span class="welcome-word" id="welcomeWord" lang="en">WELCOME</span>
-      <span class="welcome-ornament" aria-hidden="true">✦ ❋ ✦</span>
-    </div>
-    <img
-      src="assets/main-quest-banner.webp"
-      alt="Main Quest: My portfolio isn't about me. It's about the people who trusted me. The best quests end with the client winning. Play different. Build legacy."
-      class="main-quest-banner"
-    >
-  </div>
-</div>
-
 <!-- HERO -->
 <section id="hero">
   <div class="hero-pixel-bg"></div>
@@ -3383,6 +3410,22 @@ footer {
   <div class="coin-float" style="top:35%;left:4%;--cd:4s;--delay:1s">⭐</div>
   <div class="coin-float" style="top:65%;left:6%;--cd:6s;--delay:0.5s">💎</div>
   <div class="coin-float" style="top:20%;left:48%;--cd:3.5s;--delay:2s">🌟</div>
+
+  <!-- MAIN QUEST BANNER (revealed on first scroll; centered overlay on wide desktop, strip on smaller screens) -->
+  <div class="dialogue-box">
+    <div class="hero-dialogue-content">
+      <div class="welcome-marquee" aria-label="Welcome">
+        <span class="welcome-ornament" aria-hidden="true">✦ ❋ ✦</span>
+        <span class="welcome-word" id="welcomeWord" lang="en">WELCOME</span>
+        <span class="welcome-ornament" aria-hidden="true">✦ ❋ ✦</span>
+      </div>
+      <img
+        src="assets/main-quest-banner.webp"
+        alt="Main Quest: My portfolio isn't about me. It's about the people who trusted me. The best quests end with the client winning. Play different. Build legacy."
+        class="main-quest-banner"
+      >
+    </div>
+  </div>
 
   <div class="hero-left">
     <div class="hero-name-block">
