@@ -313,20 +313,22 @@ body::after {
 @media (min-width: 1400px) {
   #hero {
     grid-template-columns: 1.12fr 0.88fr;
+    padding-top: 150px;
   }
   .dialogue-box {
     position: absolute;
-    top: 148px;
-    left: 47%;
-    transform: translate(-50%, 0) scale(0.9);
-    width: clamp(320px, 26vw, 520px);
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     max-height: none;
     overflow: visible;
     background: transparent;
     border-bottom: none;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: none;
+    transition: opacity 0.55s ease;
   }
   .dialogue-box.is-visible {
     max-height: none;
@@ -334,23 +336,42 @@ body::after {
     box-shadow: none;
     opacity: 1;
     pointer-events: auto;
-    transform: translate(-50%, 0) scale(1);
+    transform: none;
   }
   .dialogue-box .hero-dialogue-content {
+    display: block;
+    position: relative;
+    max-width: none;
+    margin: 0;
     padding: 0;
-    gap: 12px;
+    opacity: 1;
+    transform: none;
   }
+  /* WELCOME as a centered heading, pinned above the player-name line */
   .dialogue-box .welcome-marquee {
-    gap: 10px;
-    padding: 8px 14px;
-    max-width: 100%;
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 16px;
+    padding: 12px 34px;
+    max-width: max-content;
   }
   .dialogue-box .welcome-word {
-    font-size: clamp(20px, 1.9vw, 30px);
+    font-size: clamp(30px, 2.5vw, 44px);
   }
   .dialogue-box .welcome-ornament {
-    font-size: 11px;
-    letter-spacing: 0.2em;
+    font-size: 15px;
+    letter-spacing: 0.3em;
+  }
+  /* Main Quest banner sits on the player-name line, large and readable */
+  .dialogue-box .main-quest-banner {
+    position: absolute;
+    top: 150px;
+    left: 44%;
+    transform: translateX(-50%);
+    width: clamp(460px, 40vw, 640px);
+    max-height: none;
   }
 }
 .hero-dialogue-content {
@@ -3356,38 +3377,101 @@ footer {
    #hero as a 2-column grid, so on mobile hero-left and
    hero-right were squeezed side-by-side instead of stacking.
    This block forces true single-column stacking and puts the
-   pieces in the order: player name -> portrait/Start Game ->
-   stats grid -> Exit Game/Disturb Me buttons -> Main Quest banner.
+   pieces in the order:
+     Main Quest banner + Welcome -> player name -> portrait /
+     Start Game -> 2x2 stats grid -> Exit Game / Disturb Me
+     buttons (side by side).
    ============================================================ */
 @media (max-width: 900px) {
   #hero {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
   }
   .hero-left {
     display: contents;
   }
+  /* Main Quest banner + welcome sits at the very top, above the name */
+  .dialogue-box {
+    grid-column: 1;
+    grid-row: 1;
+  }
   .hero-name-block {
     grid-column: 1;
     grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /* Let the name + signature participate directly in the name-block
+     flex flow so the signature can be ordered below the badges. */
+  .hero-name-row {
+    display: contents;
+  }
+  .hero-name-sub  { order: 1; }
+  .hero-name      { order: 2; }
+  .hero-class-row {
+    order: 3;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  /* Signature drops below the class / level badges */
+  .hero-signature {
+    order: 4;
+    margin-top: 14px;
   }
   .hero-right {
     grid-column: 1;
     grid-row: 3;
   }
+  /* 2 x 2 stat grid, matching desktop / reference layout — larger on mobile */
   .hero-stats-row {
     grid-column: 1;
     grid-row: 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
     margin-top: 20px;
-    padding-inline: 16px;
+    margin-inline: auto;
+    width: 100%;
+    max-width: 520px;
+    padding-inline: 8px;
+    justify-content: center;
   }
+  .hero-stats-row .stat-box {
+    padding: 28px 20px;
+    min-height: 132px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-stats-row .stat-box-label {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  .hero-stats-row .stat-box-val {
+    font-size: 32px;
+  }
+  /* Buttons stacked, one below the other, compact (not full width) */
   .hero-cta-row {
     grid-column: 1;
     grid-row: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     padding-inline: 16px;
+    margin-top: 18px;
   }
-  .dialogue-box {
-    grid-row: 6;
+  .hero-cta-row .exit-game-btn,
+  .hero-cta-row .btn-px {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: max-content;
+    padding: 12px 26px;
+    font-size: 8px;
   }
 }
 
@@ -3491,7 +3575,7 @@ footer {
       </div>
       <div class="hero-class-row">
         <span class="class-badge">CLASS: DIGITAL MARKETER</span>
-        <span class="level-badge">LVL 5</span>
+        <span class="level-badge">LVL 8</span>
       </div>
     </div>
 
