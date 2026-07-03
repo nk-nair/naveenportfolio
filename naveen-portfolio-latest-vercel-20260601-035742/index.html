@@ -4,6 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NAVEEN NAIR — PLAYER ONE</title>
+<meta name="description" content="Naveen Nair — Digital Marketing Manager with 8+ years building brands, campaigns and growth. Explore a retro-game portfolio of client wins, expertise and certifications.">
+<meta name="theme-color" content="#050510">
+<meta name="author" content="Naveen Nair">
+
+<!-- Social sharing (Open Graph / Twitter) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Naveen Nair — Player One">
+<meta property="og:title" content="NAVEEN NAIR — Digital Marketing Manager">
+<meta property="og:description" content="8+ years building brands, campaigns and growth. Explore my retro-game portfolio: client wins, expertise and certifications.">
+<meta property="og:url" content="https://naveenknair.vercel.app/">
+<meta property="og:image" content="https://naveenknair.vercel.app/assets/main-quest-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NAVEEN NAIR — Digital Marketing Manager">
+<meta name="twitter:description" content="8+ years building brands, campaigns and growth. A retro-game portfolio of client wins, expertise and certifications.">
+<meta name="twitter:image" content="https://naveenknair.vercel.app/assets/main-quest-banner.webp">
+
+<!-- Pixel-sword favicon (theme-matched, no extra asset needed) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050510'/%3E%3Ctext x='16' y='24' font-size='22' text-anchor='middle'%3E%E2%9A%94%EF%B8%8F%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -364,13 +385,14 @@ body::after {
     font-size: 15px;
     letter-spacing: 0.3em;
   }
-  /* Main Quest banner sits on the player-name line, large and readable */
+  /* Main Quest banner sits just below the WELCOME line, right-aligned */
   .dialogue-box .main-quest-banner {
     position: absolute;
-    top: 150px;
-    left: 44%;
-    transform: translateX(-50%);
-    width: clamp(460px, 40vw, 640px);
+    top: 110px;
+    right: 36%;
+    left: auto;
+    transform: none;
+    width: clamp(420px, 36vw, 600px);
     max-height: none;
   }
 }
@@ -2128,7 +2150,6 @@ section.px-section {
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x proximity;
   padding: 42px 0 16px;
   background:
     repeating-linear-gradient(90deg, rgba(255,230,0,0.14) 0 12px, transparent 12px 28px),
@@ -2192,11 +2213,11 @@ section.px-section {
   align-items: center;
   justify-content: center;
   min-height: 160px;
-  scroll-snap-align: start;
   transition: background 0.1s;
   cursor: default;
   position: relative;
   overflow: hidden;
+  backface-visibility: hidden;
 }
 .client-px::after {
   content: "";
@@ -2379,6 +2400,13 @@ section.px-section {
   .stats-asset-card,
   .cert-card-px {
     scroll-snap-align: start;
+  }
+  .clients-grid {
+    animation: none;
+  }
+  .client-px::after {
+    animation: none;
+    opacity: 0;
   }
 }
 
@@ -3762,8 +3790,8 @@ footer {
     <div class="project-console-body">
   <button type="button" class="project-menu-nav prev" aria-label="Previous portfolio item">‹</button>
   <div class="project-switcher" role="tablist" aria-label="Featured projects">
-    <button type="button" class="project-tab is-active" data-project-tab="plus-barrels" role="tab" aria-selected="true"><span class="project-tab-thumb"><img src="assets/selected-plus-barrels.png" alt="" loading="lazy"></span><span class="project-tab-label">PLUS BARRELS</span></button>
-    <button type="button" class="project-tab" data-project-tab="forest-creators" role="tab" aria-selected="false"><span class="project-tab-thumb"><img src="assets/selected-forest-creators.png" alt="" loading="lazy"></span><span class="project-tab-label">FOREST CREATORS</span></button>
+    <button type="button" class="project-tab is-active" data-project-tab="plus-barrels" role="tab" aria-selected="true"><span class="project-tab-thumb"><img loading="lazy" decoding="async" src="assets/selected-plus-barrels.png" alt="" loading="lazy"></span><span class="project-tab-label">PLUS BARRELS</span></button>
+    <button type="button" class="project-tab" data-project-tab="forest-creators" role="tab" aria-selected="false"><span class="project-tab-thumb"><img loading="lazy" decoding="async" src="assets/selected-forest-creators.png" alt="" loading="lazy"></span><span class="project-tab-label">FOREST CREATORS</span></button>
     <button type="button" class="project-tab" data-project-tab="applause" role="tab" aria-selected="false"><span class="project-tab-thumb project-tab-thumb-poster" data-theme="pink">A+</span><span class="project-tab-label">APPLAUSE</span></button>
     <button type="button" class="project-tab" data-project-tab="brand-meme" role="tab" aria-selected="false"><span class="project-tab-thumb project-tab-thumb-poster" data-theme="meme">LOL</span><span class="project-tab-label">BRAND MEMES</span></button>
     <button type="button" class="project-tab" data-project-tab="personal" role="tab" aria-selected="false"><span class="project-tab-thumb project-tab-thumb-poster" data-theme="green">PX</span><span class="project-tab-label">PERSONAL</span></button>
@@ -3782,11 +3810,11 @@ footer {
       </div>
       <div class="project-media-grid">
         <a href="https://plusbarrels.com/" target="_blank" rel="noopener" class="project-media-card">
-          <img src="assets/selected-plus-barrels.png" alt="Plus Barrels website preview">
+          <img loading="lazy" decoding="async" src="assets/selected-plus-barrels.png" alt="Plus Barrels website preview">
           <div class="project-media-info"><span class="project-media-title">PLUS BARRELS WEBSITE</span><span class="project-media-action">OPEN SITE</span></div>
         </a>
         <a href="https://youtu.be/m51XkyzHO6k" target="_blank" rel="noopener" class="project-media-card">
-          <img src="assets/selected-youtube.png" alt="Plus Barrels YouTube video preview">
+          <img loading="lazy" decoding="async" src="assets/selected-youtube.png" alt="Plus Barrels YouTube video preview">
           <div class="project-media-info"><span class="project-media-title">BRAND VIDEO</span><span class="project-media-action">WATCH VIDEO</span></div>
         </a>
       </div>
@@ -3802,11 +3830,11 @@ footer {
       </div>
       <div class="project-media-grid">
         <a href="https://www.instagram.com/rknair1671/" target="_blank" rel="noopener" class="project-media-card">
-          <img src="assets/selected-forest-creators.png" alt="Forest Creators Instagram profile preview">
+          <img loading="lazy" decoding="async" src="assets/selected-forest-creators.png" alt="Forest Creators Instagram profile preview">
           <div class="project-media-info"><span class="project-media-title">INSTAGRAM PRESENCE</span><span class="project-media-action">OPEN PROFILE</span></div>
         </a>
         <a href="https://www.youtube.com/watch?v=d6BicVpdmrU" target="_blank" rel="noopener" class="project-media-card">
-          <img src="assets/selected-forest-video.png" alt="Forest Creators documentary video preview">
+          <img loading="lazy" decoding="async" src="assets/selected-forest-video.png" alt="Forest Creators documentary video preview">
           <div class="project-media-info"><span class="project-media-title">THE GREEN HERO OF INDIA</span><span class="project-media-action">WATCH VIDEO</span></div>
         </a>
       </div>
@@ -3915,19 +3943,19 @@ footer {
     <div class="stats-slider-window">
     <div class="stats-assets-grid" data-auto-slider>
       <div class="stats-asset-card">
-        <div class="stats-asset-media"><img src="assets/stats-original-01.png" alt="Original campaign stats screenshot 1"></div>
+        <div class="stats-asset-media"><img loading="lazy" decoding="async" src="assets/stats-original-01.png" alt="Original campaign stats screenshot 1"></div>
       </div>
       <div class="stats-asset-card">
-        <div class="stats-asset-media"><img src="assets/stats-original-02.png" alt="Original campaign stats screenshot 2"></div>
+        <div class="stats-asset-media"><img loading="lazy" decoding="async" src="assets/stats-original-02.png" alt="Original campaign stats screenshot 2"></div>
       </div>
       <div class="stats-asset-card">
-        <div class="stats-asset-media"><img src="assets/stats-original-06.png" alt="Original campaign stats screenshot 6"></div>
+        <div class="stats-asset-media"><img loading="lazy" decoding="async" src="assets/stats-original-06.png" alt="Original campaign stats screenshot 6"></div>
       </div>
       <div class="stats-asset-card">
-        <div class="stats-asset-media"><img src="assets/stats-original-07.png" alt="Original campaign stats screenshot 7"></div>
+        <div class="stats-asset-media"><img loading="lazy" decoding="async" src="assets/stats-original-07.png" alt="Original campaign stats screenshot 7"></div>
       </div>
       <div class="stats-asset-card">
-        <div class="stats-asset-media"><img src="assets/stats-original-08.png" alt="Original campaign stats screenshot 8"></div>
+        <div class="stats-asset-media"><img loading="lazy" decoding="async" src="assets/stats-original-08.png" alt="Original campaign stats screenshot 8"></div>
       </div>
     </div>
     </div>
@@ -4049,13 +4077,13 @@ footer {
     </div>
     <div class="client-px">
       <div class="client-px-icon">🔐</div>
-      <div class="client-logo-px"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=indisec.com" alt="IndiSec logo"></div>
+      <div class="client-logo-px"><img loading="lazy" decoding="async" src="https://www.google.com/s2/favicons?sz=64&amp;domain=indisec.com" alt="IndiSec logo"></div>
       <div class="client-px-name">INDISEC</div>
       <div class="client-px-type">DATA PROTECTION</div>
     </div>
     <div class="client-px">
       <div class="client-px-icon">🐾</div>
-      <div class="client-logo-px"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=lorvet.co.in" alt="Lorvet logo"></div>
+      <div class="client-logo-px"><img loading="lazy" decoding="async" src="https://www.google.com/s2/favicons?sz=64&amp;domain=lorvet.co.in" alt="Lorvet logo"></div>
       <div class="client-px-name">LORVET</div>
       <div class="client-px-type">CAPITAL FUNDRAISING / IPO</div>
     </div>
@@ -4066,7 +4094,7 @@ footer {
     </div>
     <div class="client-px">
       <div class="client-px-icon">📐</div>
-      <div class="client-logo-px"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=5-curves.com" alt="5 Curves logo"></div>
+      <div class="client-logo-px"><img loading="lazy" decoding="async" src="https://www.google.com/s2/favicons?sz=64&amp;domain=5-curves.com" alt="5 Curves logo"></div>
       <div class="client-px-name">5 CURVES</div>
       <div class="client-px-type">CFO / FINANCIAL ADVISORY</div>
     </div>
@@ -4141,7 +4169,7 @@ footer {
       <div class="client-px-type">LEGAL SERVICES</div>
     </div>
     <div class="client-px">
-      <div class="client-logo-px"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=predikly.com" alt="Predikly logo"></div>
+      <div class="client-logo-px"><img loading="lazy" decoding="async" src="https://www.google.com/s2/favicons?sz=64&amp;domain=predikly.com" alt="Predikly logo"></div>
       <div class="client-px-name">PREDIKLY</div>
       <div class="client-px-type">TECH / DATA</div>
     </div>
@@ -4234,32 +4262,32 @@ footer {
   <div class="cert-slider-window reveal">
   <div class="cert-grid-px" data-auto-slider>
     <div class="cert-card-px">
-      <div class="cert-image-px has-image"><img src="assets/cert-be10x-ai-tools.svg" alt="be10x AI Tools Workshop Certificate"></div>
+      <div class="cert-image-px has-image"><img loading="lazy" decoding="async" src="assets/cert-be10x-ai-tools.svg" alt="be10x AI Tools Workshop Certificate"></div>
       <div class="cert-name-px">AI TOOLS WORKSHOP</div>
       <div class="cert-meta-px">BE10X · 2026</div>
     </div>
     <div class="cert-card-px">
-      <div class="cert-image-px has-image"><img src="assets/cert-google-analytics-beginners.svg" alt="Google Analytics for Beginners Certificate"></div>
+      <div class="cert-image-px has-image"><img loading="lazy" decoding="async" src="assets/cert-google-analytics-beginners.svg" alt="Google Analytics for Beginners Certificate"></div>
       <div class="cert-name-px">GOOGLE ANALYTICS FOR BEGINNERS</div>
       <div class="cert-meta-px">GOOGLE ANALYTICS ACADEMY</div>
     </div>
     <div class="cert-card-px">
-      <div class="cert-image-px has-image"><img src="assets/cert-neodocto-scholarship.svg" alt="NeoDocto Certificate of Scholarship"></div>
+      <div class="cert-image-px has-image"><img loading="lazy" decoding="async" src="assets/cert-neodocto-scholarship.svg" alt="NeoDocto Certificate of Scholarship"></div>
       <div class="cert-name-px">CERTIFICATE OF SCHOLARSHIP</div>
       <div class="cert-meta-px">NEODOCTO · 2022</div>
     </div>
     <div class="cert-card-px">
-      <div class="cert-image-px has-image"><img src="assets/cert-iide-digital-marketing.svg" alt="IIDE Digital Marketing Fundamentals Certificate"></div>
+      <div class="cert-image-px has-image"><img loading="lazy" decoding="async" src="assets/cert-iide-digital-marketing.svg" alt="IIDE Digital Marketing Fundamentals Certificate"></div>
       <div class="cert-name-px">DIGITAL MARKETING FUNDAMENTALS</div>
       <div class="cert-meta-px">IIDE · 2022</div>
     </div>
     <div class="cert-card-px">
-      <div class="cert-image-px has-image"><img src="assets/cert-neodocto-performance-report.svg" alt="NeoDocto Digital Marketing Expert Program Performance Report"></div>
+      <div class="cert-image-px has-image"><img loading="lazy" decoding="async" src="assets/cert-neodocto-performance-report.svg" alt="NeoDocto Digital Marketing Expert Program Performance Report"></div>
       <div class="cert-name-px">DIGITAL MARKETING EXPERT PROGRAM</div>
       <div class="cert-meta-px">GRADE A+ · NEODOCTO</div>
     </div>
     <div class="cert-card-px">
-      <div class="cert-image-px has-image"><img src="assets/cert-google-digital-unlocked.svg" alt="Google Digital Unlocked Fundamentals of Digital Marketing Certificate"></div>
+      <div class="cert-image-px has-image"><img loading="lazy" decoding="async" src="assets/cert-google-digital-unlocked.svg" alt="Google Digital Unlocked Fundamentals of Digital Marketing Certificate"></div>
       <div class="cert-name-px">FUNDAMENTALS OF DIGITAL MARKETING</div>
       <div class="cert-meta-px">GOOGLE DIGITAL UNLOCKED</div>
     </div>
@@ -5044,6 +5072,13 @@ document.querySelectorAll('[data-auto-slider]').forEach(track => {
   const viewport = track.parentElement;
   if (!viewport) return;
 
+  // Respect reduced-motion: leave the row as a static, manually-scrollable
+  // strip (the CSS scroll-snap fallback handles this) instead of auto-scrolling.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    track.dataset.sliderReady = 'true';
+    return;
+  }
+
   const originals = [...track.children];
   originals.forEach(card => {
     const clone = card.cloneNode(true);
@@ -5055,64 +5090,79 @@ document.querySelectorAll('[data-auto-slider]').forEach(track => {
   });
 
   const isStatsSlider = track.classList.contains('stats-assets-grid');
-  const firstClone = track.children[originals.length];
   const baseSpeed = isStatsSlider ? 0.72 : 0.62;
   let offset = 0;
   let lastTime = 0;
 
-  const updateFocus = () => {
-    const viewportRect = viewport.getBoundingClientRect();
-    const centerX = viewportRect.left + viewportRect.width / 2;
+  // Cached geometry (recomputed only on resize / load, never per-frame).
+  let loopPoint = 0;
+  let viewportLeft = 0;
+  let viewportWidth = 0;
+  let cardMetrics = []; // { left, width } relative to track, measured once
+
+  const measure = () => {
+    const firstClone = track.children[originals.length];
+    loopPoint = firstClone
+      ? firstClone.offsetLeft - originals[0].offsetLeft
+      : track.scrollWidth / 2;
+    const vpRect = viewport.getBoundingClientRect();
+    viewportLeft = vpRect.left;
+    viewportWidth = vpRect.width;
+    cardMetrics = [...track.children].map(card => ({
+      el: card,
+      left: card.offsetLeft,
+      width: card.offsetWidth
+    }));
+  };
+
+  const applyFocus = () => {
+    if (isStatsSlider) return;
+    const centerX = viewportWidth / 2;
+    const span = viewportWidth * 0.58 || 1;
     let closest = null;
     let closestDistance = Infinity;
-
-    [...track.children].forEach(card => {
-      if (isStatsSlider) {
-        card.style.transform = 'none';
-        card.style.opacity = '1';
-        card.style.zIndex = '1';
-        card.style.filter = 'none';
-        return;
-      }
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.left + rect.width / 2;
+    for (const m of cardMetrics) {
+      // Card center in viewport space, derived from cached layout + current offset.
+      const cardCenter = m.left - offset + m.width / 2;
       const distance = Math.abs(centerX - cardCenter);
-      const ratio = Math.min(1, distance / (viewportRect.width * 0.58));
+      const ratio = Math.min(1, distance / span);
       const scale = 1.08 - ratio * 0.18;
       const opacity = 1 - ratio * 0.34;
-
-      card.style.transform = `scale(${scale.toFixed(3)})`;
-      card.style.opacity = opacity.toFixed(3);
-      card.style.zIndex = String(Math.round((1 - ratio) * 10));
-      card.style.filter = `saturate(${(1.08 - ratio * 0.16).toFixed(2)}) brightness(${(1.06 - ratio * 0.08).toFixed(2)})`;
-
+      const el = m.el;
+      el.style.transform = `scale(${scale.toFixed(3)})`;
+      el.style.opacity = opacity.toFixed(3);
+      el.style.zIndex = String(Math.round((1 - ratio) * 10));
+      el.style.filter = `saturate(${(1.08 - ratio * 0.16).toFixed(2)}) brightness(${(1.06 - ratio * 0.08).toFixed(2)})`;
       if (distance < closestDistance) {
         closestDistance = distance;
-        closest = card;
+        closest = el;
       }
-    });
-
-    track.querySelectorAll('.is-focus').forEach(card => card.classList.remove('is-focus'));
-    if (!isStatsSlider) closest?.classList.add('is-focus');
+    }
+    for (const c of track.querySelectorAll('.is-focus')) c.classList.remove('is-focus');
+    closest?.classList.add('is-focus');
   };
 
   const tick = timestamp => {
     const delta = lastTime ? Math.min(34, timestamp - lastTime) : 16.67;
     lastTime = timestamp;
-    const loopPoint = firstClone
-      ? firstClone.offsetLeft - originals[0].offsetLeft
-      : track.scrollWidth / 2;
 
     if (loopPoint > 0) {
       offset += baseSpeed * (delta / 16.67);
       if (offset >= loopPoint) offset -= loopPoint;
       track.style.transform = `translate3d(${-offset.toFixed(2)}px, 0, 0)`;
+      applyFocus();
     }
-
-    updateFocus();
     requestAnimationFrame(tick);
   };
 
+  let resizeRaf = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(resizeRaf);
+    resizeRaf = requestAnimationFrame(measure);
+  });
+  window.addEventListener('load', measure);
+
+  measure();
   track.dataset.sliderReady = 'true';
   requestAnimationFrame(tick);
 });
@@ -5159,6 +5209,33 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.1 });
 reveals.forEach(r => io.observe(r));
+</script>
+
+<!-- Chatbase chatbot -->
+<script>
+(function(){
+  if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+    window.chatbase = (...arguments) => {
+      if(!window.chatbase.q){ window.chatbase.q = []; }
+      window.chatbase.q.push(arguments);
+    };
+    window.chatbase = new Proxy(window.chatbase, {
+      get(target, prop){
+        if(prop === "q"){ return target.q; }
+        return (...args) => target(prop, ...args);
+      }
+    });
+  }
+  const onLoad = function(){
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "bRQUj3jhHWUVQXp4mGIZX";
+    script.domain = "www.chatbase.co";
+    document.body.appendChild(script);
+  };
+  if(document.readyState === "complete"){ onLoad(); }
+  else { window.addEventListener("load", onLoad); }
+})();
 </script>
 </body>
 </html>
